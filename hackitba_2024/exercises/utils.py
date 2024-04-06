@@ -1,5 +1,6 @@
 from math import floor
 from models import *
+import random
 
 # Create your views here.
 def percent_calc(act, total):
@@ -89,7 +90,7 @@ def delete_achievement(achiv_name):
   achiv = Achievement.objects.get(pk = achiv_name)
   achiv.delete()
 
-def create_exercise(exer_description, exer_difficulty, exer_type):
+def create_exercise(exer_title, exer_description, exer_difficulty, exer_type, exer_image):
   if (exer_difficulty not in VALID_DIFFICULTIES):
     return print("Invalid exercise difficulty.")
   if (exer_type not in VALID_EXERCISES):
@@ -98,11 +99,34 @@ def create_exercise(exer_description, exer_difficulty, exer_type):
   exer_name = f"{exer_type}_{exer_difficulty}_{cant+1}"
   Exercise.objects.create(
     name = exer_name,
+    title = exer_title,
     description = exer_description,
     difficulty = exer_difficulty,
-    type = exer_type
+    type = exer_type,
+    image = exer_image
   )
 
 def delete_exercise(exer_name):
   exercise = Exercise.objects.get(pk = exer_name)
   exercise.delete()
+
+def read_and_parse(filename, word_amount):
+  try:
+    with open(f'../texto/{filename}.txt', 'r') as file:
+      text_content = file.read().upper().split('\n')
+  except FileNotFoundError:
+    return []
+  filtered = random.sample(text_content, k = word_amount)
+  parsed = list(map(lambda pair: tuple(pair.split(',')), filtered))
+  corrected = list(map(lambda p: (
+    {
+      'text': p[0],
+      'correct': True
+    },
+    {
+      'text': p[1],
+      'correct': False
+    }
+  ), parsed))
+  reordered = list(map(lambda p: random.sample(p, k=len(p)), corrected))
+  return reordered
