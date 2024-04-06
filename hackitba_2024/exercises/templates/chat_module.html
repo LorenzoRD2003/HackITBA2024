@@ -26,17 +26,9 @@
     }, 3000);
 
       function sendMessageToDjango(message) {
-          $.ajax({
-              url: '/app/openai/',
-              type: 'POST',
-              data: JSON.stringify({ message: message }),
-              success: function(response) {
-                  receiveMessageFromAI(response.response);
-              },
-              error: function(xhr, status, error) {
-                  console.error(error);
-              }
-          });
+        setTimeout(function() {
+            receiveMessageFromAI("La API no puedo ser implementada debido a falta de presupuesto para la llave (POR AHORA).")
+        }, 3000);
       }
       
       // Example function to handle sending message from chat UI
