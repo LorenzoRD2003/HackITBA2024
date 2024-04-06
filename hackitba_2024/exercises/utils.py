@@ -1,5 +1,5 @@
 from math import floor
-from models import *
+from exercises.models import *
 
 # Create your views here.
 def percent_calc(act, total):

@@ -29,7 +29,7 @@ class Exercise(models.Model):
     description = models.TextField()
     type = models.CharField(max_length=255, choices=EXERCISE_TYPES)
     difficulty = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=255)
+    image_url = models.CharField(max_length=255, default='/')
 
     def get_name(self):
         return self.name
