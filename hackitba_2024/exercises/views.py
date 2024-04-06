@@ -78,11 +78,10 @@ class ExerciseView(LoginRequiredMixin, View):
     # Later, we can make filters on the next line
     exercises = list(Exercise.object.all())
     
-    db_list = list(map(lambda exer: genobj_exercise(user, exer), exercises))
+    db_list = list(map(lambda exer: exer.generate_object(user), exercises))
     return render(request, 'exercises.html', {
       'exercise_list': db_list
     })
-
 
 class AchievementView(LoginRequiredMixin, View):
   def get(self, request):
@@ -118,7 +117,55 @@ class AchievementView(LoginRequiredMixin, View):
     # Later, we can make filters on the next line
     achievements = list(Achievement.object.all())
     
-    db_list = list(map(lambda achiv: genobj_achievement(user, achiv), achievements))
+    db_list = list(map(lambda achiv: achiv.generate_object(user), achievements))
     return render(request, 'achievements.html', {
       'achievement_list': db_list
+    })
+
+class ExerciseOneView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })
+
+class ExerciseTwoView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })
+
+class ExerciseThreeView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })
+
+class ExerciseFourView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
     })

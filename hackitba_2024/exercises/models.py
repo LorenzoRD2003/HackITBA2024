@@ -57,6 +57,21 @@ class Exercise(models.Model):
         if (value not in VALID_DIFFICULTIES):
             return print("Invalid exercise difficulty.")
         self.difficulty = value
+    
+    # Util for returning exercise as an object and give it to the frontend
+    def generate_object(self, user):
+        user_exercise = UserExercise.objects.filter(
+            user_id = user.username,
+            exercise_id = self.name).first()
+        return {
+            'name': self.name,
+            'description': self.description,
+            'difficulty': self.difficulty,
+            'image_url': 'img/rubik.png',
+            'type': self.type,
+            'is_solved': user_exercise.is_solved,
+            'url': f'/exercise/{self.name}'
+        }
 
 # Represents an instance of a specific exercise for a specific user.
 class UserExercise(models.Model):
@@ -118,6 +133,21 @@ class Achievement(models.Model):
         if (value not in VALID_ACHIEVEMENTS):
             return print("Invalid achievement type.")
         self.type = value
+    
+    # Util for returning achievement as an object and give it to the frontend
+    def generate_object(self, user):
+        user_achiv = UserAchievement.objects.filter(
+        user_id = user.username,
+        achievement_id = self.name).first()
+        return {
+            'name': self.name,
+            'description': self.description,
+            'exer_difficulty': self.exer_difficulty,
+            'exer_type': self.exer_type,
+            'progress': user_achiv.progress,
+            'type': self.type,
+            'url': f'/exercise/{self.name}'
+        }
     
 # Represents an instance of a specific achievement for a specific user.
 class UserAchievement(models.Model):
