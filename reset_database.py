@@ -1,20 +1,26 @@
 from hackitba_2024.exercises.utils import *
 
-# Exercises creation
+
 create_exercise(
-  "Ejercicio 1",
+  "Ejercicio 1 - Facil",
+  "Juego de los radio buttons",
   BEGINNER,
-  MEMORY
+  VISUALIZATION,
+  "2.png"
 )
 create_exercise(
-  "Ejercicio 2",
-  INTERMEDIATE,
-  MEMORY
+  "Ejercicio 1 - Intermedio",
+  "Juego de los radio buttons",
+  BEGINNER,
+  VISUALIZATION,
+  "2.png"
 )
 create_exercise(
-  "Ejercicio 3",
-  ADVANCED,
-  VISUALIZATION
+  "Ejercicio 1 - Dificil",
+  "Juego de los radio buttons",
+  BEGINNER,
+  VISUALIZATION,
+  "2.png"
 )
 
 # Achievements creation
