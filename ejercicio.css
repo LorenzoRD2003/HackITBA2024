@@ -1,10 +1,14 @@
-.contenedorPalabras {
+.contenedorActividad {
     position: absolute;
     top: 15%;
-    left: 10%;
+    left: 5%;
   }
   .imagen{
     float: right;
     width:350px;
     height:350px;
+  }
+  .text-center {
+    text-align: center;
+    top:75%;
   }
