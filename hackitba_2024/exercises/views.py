@@ -131,13 +131,13 @@ class ExerciseOneView(LoginRequiredMixin, View):
     difficulty = exercise.get_difficulty()
     if (difficulty == BEGINNER):
       # Read and parse info from ex1_beginner.txt
-      questions = read_and_parse("ex1_beginner", 5)
+      questions = read_and_parse_ex1("ex1_beginner", 5)
     elif (difficulty == INTERMEDIATE):
       # Read and parse info from ex1_intermediate.txt
-      questions = read_and_parse("ex1_intermediate", 10)
+      questions = read_and_parse_ex1("ex1_intermediate", 10)
     elif (difficulty == ADVANCED):
       # Read and parse info from ex1_advanced.txt
-      questions = read_and_parse("ex1_advanced", 20)
+      questions = read_and_parse_ex1("ex1_advanced", 20)
     
     return render(request, "ex1.html", {
       'exercise_data': exercise_data,
@@ -151,9 +151,17 @@ class ExerciseTwoView(LoginRequiredMixin, View):
     exercise = Exercise.objects.get(pk = exercise_name)
     
     exercise_data = exercise.generate_object(user)
+    difficulty = exercise.get_difficulty()
+    if (difficulty == BEGINNER):
+      questions = read_and_parse_ex2("ex2_beginner", 6)
+    elif (difficulty == INTERMEDIATE):
+      questions = read_and_parse_ex2("ex2_intermediate", 6)
+    elif (difficulty == ADVANCED):
+      questions = read_and_parse_ex2("ex2_advanced", 6)
     
-    return render(request, "ex1.html", {
-      'exercise_data': exercise_data
+    return render(request, "ex2.html", {
+      'exercise_data': exercise_data,
+      "questions": questions
     })
 
 class ExerciseThreeView(LoginRequiredMixin, View):

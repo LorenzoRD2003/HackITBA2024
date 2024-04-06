@@ -110,7 +110,7 @@ def delete_exercise(exer_name):
   exercise = Exercise.objects.get(pk = exer_name)
   exercise.delete()
 
-def read_and_parse(filename, word_amount):
+def read_and_parse_ex1(filename, word_amount):
   try:
     with open(f'../texto/{filename}.txt', 'r') as file:
       text_content = file.read().upper().split('\n')
@@ -130,3 +130,33 @@ def read_and_parse(filename, word_amount):
   ), parsed))
   reordered = list(map(lambda p: random.sample(p, k=len(p)), corrected))
   return reordered
+
+def read_and_parse_ex2(filename, amount):
+  try:
+    with open(f'../texto/{filename}.txt', 'r') as file:
+      text_content = file.read().upper().split('\n')
+  except FileNotFoundError:
+    return []
+  # Three words, one image
+  filtered = random.sample(text_content, k = amount)
+  splitted = list(map(lambda pair: tuple(pair.split(',')), filtered))
+  parsed = list(map(lambda p: {
+    'options': [
+      {
+        'text': p[0],
+        'correct': True
+      },
+      {
+        'text': p[1],
+        'correct': False
+      },
+      {
+        'text': p[2],
+        'correct': False
+      }
+    ],
+    "image": p[3]
+  }, splitted))
+  for p in parsed:
+    p["options"] = random.sample(p["options"], k = len(p["options"]))
+  return parsed
