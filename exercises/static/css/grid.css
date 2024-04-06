@@ -1,0 +1,9 @@
+.scrollable-grid {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.scrollable-grid .card {
+    display: inline-block;
+    width: 18rem; /* Set your desired card width */
+    margin-right: 10px; /* Adjust spacing between cards */
+}
