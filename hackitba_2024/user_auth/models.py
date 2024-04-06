@@ -1,12 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+import datetime
+
 class UserProfile(models.Model):
   username = models.CharField(max_length=200, primary_key=True, default='')
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   date_of_birth = models.DateField()
   streak = models.IntegerField(default=0)
-  entered_today = models.BooleanField(default=0)
+  last_login = models.DateTimeField(auto_now=True)
   
   def __str__(self):
     return self.user.username

@@ -149,9 +149,12 @@ class Achievement(models.Model):
         user_id = user,
         achievement_id = self.name).first()
 
+        print(user_achiv.progress)
+
         return {
             'name': self.name,
             'description': self.description,
+            'limit': self.limit,
             'exer_difficulty': self.exer_difficulty,
             'progress': user_achiv.progress,
             'type': self.type,

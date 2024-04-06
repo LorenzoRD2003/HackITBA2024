@@ -7,15 +7,34 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
+import datetime
+
 import math
 import random
 
 from exercises.models import UserAchievement, Achievement
 from exercises.utils import create_achievement
 
+def update_streak(username):
+    user_profile = UserProfile.objects.get(pk=username)
+    time_difference = abs(user_profile.last_login - datetime.datetime.now())
+
+    # Define a timedelta representing one day
+    one_day = datetime.timedelta(days=1)
+
+    # Check if the time difference is less than one day
+    if time_difference < one_day:
+        user_profile.streak += 1
+    
+    else:
+        user_profile.streak = 0
+
+    user_profile.save()
+
 class CustomLoginView(View):
     def get(self, request):
         if request.user.is_authenticated:
+            update_streak(request.user.username)
             return redirect(reverse('info'))
         
         return render(request, 'login.html')
@@ -26,6 +45,8 @@ class CustomLoginView(View):
 
         user = authenticate(username=username, password=password)
         if user is not None:
+            update_streak(username)
+
             login(request, user)
             return redirect('info') 
         else:

@@ -39,7 +39,7 @@ def update_progress(username, achiv_name):
 STREAK_ACHIEVEMENTS_DAYS = (5, 10, 25, 50, 100, 365)
 
 def increase_streak(username):
-  user = User.objects.get(pk = username)
+  user = UserProfile.objects.get(pk = username)
   user.set_streak(user.set_streak() + 1)
   user.save()
   for s in STREAK_ACHIEVEMENTS_DAYS:
@@ -47,19 +47,11 @@ def increase_streak(username):
 
 # Function to be executed every day
 def remove_streak(username):
-  user = User.objects.get(pk = username)
+  user = UserProfile.objects.get(pk = username)
   user.set_streak(0)
   user.save()
   for s in STREAK_ACHIEVEMENTS_DAYS:
     update_progress(username, f"STREAK_{s}")
-
-def change_day():
-  for user in User.object.all():
-    if user.get_entered_today() == False:
-      remove_streak(user)
-    else:
-      user.set_entered_today(False)
-      user.save()
 
 
 def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_difficulty=1):
