@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <img src="{% static 'img/1.png' %}" alt="">
+      </div>
+    </div>
+    <div class="forms">
+      <div class="form-content">
+        <div class="login-form">
+          <div class="title">Iniciar Sesion</div>
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="input-boxes">
+              <div class="input-box">
+                <input type="text" name="username" placeholder="Ingrese su mail" required>
+              </div>
+              <div class="input-box">
+                <input type="password" name="password" placeholder="Ingrese su contrasena" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div class="text sign-up-text">Todavia no tienes cuenta? <label for="flip">Crea una</label></div>
+            </div>
+          </form>
+        </div>
+        <div class="signup-form">
+          <div class="title">Crea Usuario</div>
+          <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}
+            <div class="input-boxes">
+              <div class="input-box">
+                <input type="text" name="email" placeholder="Ingrese su mail" required>
+              </div>
+              <div class="input-box">
+                <input type="text" name="username" placeholder="Ingrese nombre de Usuario" required>
+              </div>
+              <div class="input-box">
+                <input type="password" name="password" placeholder="Ingrese contrasena" required>
+              </div>
+              <div class="input-box">
+                <input type="date" name="date_of_birth" placeholder="Ingrese su edad" required>
+              </div>
+              <div class="input-box">
+                <select name="focus" required>
+                  <option value="alzheimer">Alzheimer</option>
+                  <option value="dyslexia">Dislexia</option>
+                </select>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div class="text sign-up-text">Ya tienes una cuenta? <label for="flip">Iniciar Sesion</label></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

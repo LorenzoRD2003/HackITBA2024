@@ -1,22 +1,45 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from django.views import View
-from models import *
-from .forms import UserRegistrationForm
+from django.http import JsonResponse
+from .models import UserProfile
 
-# Create your views here.
-class UserRegistrationView(View):
-  form_class = UserRegistrationForm
-  template_name = "registration.html"
+class CustomLoginView(View):
+    def get(self, request):
+        return render(request, 'login.html')
 
-  def get(self, request):
-    form = LoginForm()
-    return render(request, self.template_name, {"form": form})
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-  def post(self, request):
-    form = UserRegistrationForm(data = request.POST)
-    if form.is_valid():
-      # <process form cleaned data>
-      return HttpResponseRedirect("/success/")
-    return render(request, self.template_name, {"form": form})
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home') 
+        else:
+            error_message = "Invalid credentials. Please try again."
+            return render(request, 'login.html', {'error_message': error_message})
 
+class CustomRegisterView(View):
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        date_of_birth = request.POST.get('date_of_birth')
+        focus = request.POST.get('focus')
+        
+        if not (username and password and date_of_birth and focus):
+            return JsonResponse({'error': 'Missing required fields'}, status=400)   
+
+        try:
+            user = User.objects.create_user(username=username, password=password)
+            UserProfile.objects.create(
+                user=user,
+                date_of_birth=date_of_birth,
+                streak=0
+            )
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+        
+        login(request, user)
+        return redirect('home')

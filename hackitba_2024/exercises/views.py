@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from math import floor
+from django.views import View
 
-from models import *
-# Create your views here.
+from .models import *
+
+class HomeView(View):
+  pass
