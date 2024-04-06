@@ -1,0 +1,54 @@
+<div class="chat-popup">
+    <div class="header">Chat</div>
+    <div class="content" id="message-container"></div>
+    <div class="input-group">
+        <input type="text" id="user-message-input" class="form-control" placeholder="Type your message...">
+        <button id="send-message-btn" class="btn btn-primary">Send</button>
+    </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#open-chat').click(function() {
+              $('#chat-window').toggle();
+          });
+
+          $('#user-message-input').keypress(function(event) {
+              if (event.which == 13) {  // Enter key pressed
+                  sendMessageFromUI();
+              }
+          });
+      });
+      
+      setTimeout(function() {
+        receiveMessageFromAI("Hola! Mi nombre es CIFU. Mi objetivo es responder tus dudas sobre las complicaciones que estas buscando superar.")
+    }, 3000);
+
+      function sendMessageToDjango(message) {
+          $.ajax({
+              url: '/app/openai/',
+              type: 'POST',
+              data: JSON.stringify({ message: message }),
+              success: function(response) {
+                  receiveMessageFromAI(response.response);
+              },
+              error: function(xhr, status, error) {
+                  console.error(error);
+              }
+          });
+      }
+      
+      // Example function to handle sending message from chat UI
+      function sendMessageFromUI() {
+          var message = $('#user-message-input').val();
+          $('#message-container').append('<div>Yo: ' + message + '</div>');
+          sendMessageToDjango(message);
+          $('#user-message-input').val('');
+      }
+
+      // Example function to handle receiving message from AI and display in chat window
+      function receiveMessageFromAI(message) {
+          $('#message-container').append('<div>CIFU: ' + message + '</div>');
+      }
+  </script>

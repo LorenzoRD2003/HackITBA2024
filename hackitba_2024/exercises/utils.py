@@ -46,7 +46,7 @@ def increase_streak(username):
 
 # Function to be executed every day
 def remove_streak(username):
-  user = User.objects.get(pk = username)
+  user = User.objects.get(pk=username)
   user.set_streak(0)
   user.save()
   for s in STREAK_ACHIEVEMENTS_DAYS:

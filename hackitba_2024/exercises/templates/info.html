@@ -2,6 +2,17 @@
 
 {% block title %}Info{% endblock %}
 
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock head %}
+
 {% block content %}
     <h1>Hello World</h1>
 {% endblock %}
+
+{% block modules %}
+
+{% include "chat_module.html" %}
+
+{% endblock modules %}

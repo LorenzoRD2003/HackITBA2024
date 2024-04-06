@@ -29,6 +29,7 @@ class Exercise(models.Model):
     description = models.TextField()
     type = models.CharField(max_length=255, choices=EXERCISE_TYPES)
     difficulty = models.IntegerField(default=0)
+    image_url = models.CharField(max_length=255)
 
     def get_name(self):
         return self.name
@@ -66,7 +67,6 @@ class UserExercise(models.Model):
 
 
 # Achievements
-
 STREAK = 'streak'
 ACHIV_AMOUNT = 'achiv_amount'
 EXER_AMOUNT = 'exer_amount'

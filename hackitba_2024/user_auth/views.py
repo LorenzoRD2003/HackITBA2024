@@ -51,9 +51,9 @@ class CustomRegisterView(View):
             return JsonResponse({'error': str(e)}, status=500)
         
         login(request, user)
-        return redirect('info')
+        return redirect('exercises')
 
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('login')
+        return redirect('exercises')

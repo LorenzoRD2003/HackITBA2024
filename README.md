@@ -25,6 +25,7 @@ cuenta que existe la posibilidad de tener que usar:
 Pasos a seguir:
 1. Clonar repositorio (ejemplo: `git clone https://github.com/LorenzoRD2003/HackITBA2024.git`)
 2. Instalar requerimientos de pip: `pip install -r requirements.txt` (ya dentro de la carpeta `HackITBA2024`).
-3. Popular la base de datos: `python3 populate_db.py` (Idealmente se ejecuta una única vez).
-4. Correr el servidor web (local): `python3 hackitba_2024/manage.py runserver`.
+3. Aplicar migraciones a la base de datos: `python3 hackitba_2024/manage.py migrate`
+4. Popular la base de datos: `python3 reset_database.py` (Idealmente se ejecuta una única vez).
+5. Correr el servidor web (local): `python3 hackitba_2024/manage.py runserver`.
 (Cada vez que quiero correr el servidor local, utilizo `manage.py runserver`)
