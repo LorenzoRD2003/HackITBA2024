@@ -2,25 +2,24 @@
 
 {% block title %}Logros{% endblock %}
 
+{%block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% endblock head %}
+
 {% block content %}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <div class="scrollable-grid">
-        {% for achiv in achievement_list %}
-        <div class="card">
-          <img src="{% static exercise.image_url %}" class="card-img-top card-img" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ achiv.name }}</h5>
-            <p class="card-text">{{ achiv.description }}</p>
-          </div>
-            <div class="card-footer mt-auto">
-              <a href="{{ achiv.url }}" class="btn btn-primary">Comenzar</a>
-            </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+{% for achiv in achievement_list  %}
+<div class="card-transparent">
+    <div class="card-header">{{achiv.name}}</div>
+    <div class="card-block "><div class="progress blue">
+        <span class="progress-left">
+            <span class="progress-bar"></span>
+                </span>
+                <span class="progress-right">
+                                  <span class="progress-bar"></span>
+                </span>
+                <div class="progress-value">{{achiv.progress}}%</div>
+              </div></div>
+{% endfor %}
 </div>
 {% endblock %}

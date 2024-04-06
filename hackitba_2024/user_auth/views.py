@@ -48,6 +48,14 @@ class CustomRegisterView(View):
                 date_of_birth = date_of_birth,
                 streak = 0
             )
+
+            # --- Crear todo ---
+
+
+
+            # --------
+
+
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
         

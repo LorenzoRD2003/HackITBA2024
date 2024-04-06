@@ -75,17 +75,6 @@ def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_di
     exer_type = achiv_exer_type
   )
 
-def modify_achievement(achiv_name, new_achiv_description, new_achiv_limit, new_achiv_type):
-  if (new_achiv_type not in VALID_ACHIEVEMENTS): # ERROR
-    return print("Invalid achievement type.")
-  new_achiv_name = f"{new_achiv_type}_{new_achiv_limit}"
-  achiv = Achievement.objects.get(pk = achiv_name)
-  achiv.set_name(new_achiv_name)
-  achiv.set_description(new_achiv_description)
-  achiv.set_limit(new_achiv_limit)
-  achiv.set_type(new_achiv_type)
-  achiv.save()
-
 def delete_achievement(achiv_name):
   achiv = Achievement.objects.get(pk = achiv_name)
   achiv.delete()
