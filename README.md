@@ -14,7 +14,7 @@ CIFUMIND es una aplicación web diseñada para brindar ejercicios cognitivos y s
 ----------
 
 ### Próximos pasos
-
+TODO
 ----------
 ## Como ejecutar
 El proyecto está pensado para ser ejecutado en Linux, pero no hay problema en utilizar Windows, teniendo en
