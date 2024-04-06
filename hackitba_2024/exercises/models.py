@@ -7,10 +7,10 @@ BEGINNER = 0
 INTERMEDIATE = 1
 ADVANCED = 2
 
-EX1: "ex1"
-EX2: "ex2"
-EX3: "ex3"
-EX4: "ex4"
+EX1 = "ex1"
+EX2 = "ex2"
+EX3 = "ex3"
+EX4 = "ex4"
 
 VALID_DIFFICULTIES = (NONE, BEGINNER, INTERMEDIATE, ADVANCED)
 VALID_EXERCISES = (EX1, EX2, EX3, EX4)
@@ -148,8 +148,6 @@ class Achievement(models.Model):
         user_achiv = UserAchievement.objects.filter(
         user_id = user,
         achievement_id = self.name).first()
-
-        print(f'{user_achiv} Hola Mundo')
 
         return {
             'name': self.name,
