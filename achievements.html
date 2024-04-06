@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Info{% endblock %}
+{%block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="card-transparent">
+    <div class="card-header">Racha 5 dias</div>
+    <div class="card-block "><div class="progress blue">
+        <span class="progress-left">
+            <span class="progress-bar"></span>
+                </span>
+                <span class="progress-right">
+                                  <span class="progress-bar"></span>
+                </span>
+                <div class="progress-value">50%</div>
+              </div></div>
+  </div>
+{% endblock %}
