@@ -13,10 +13,12 @@
             <div class="scrollable-grid">
                 {% for exercise in exercise_list %}
                 <div class="card">
-                    <img src="{% static exercise.image_url %}" class="card-img-top" alt="...">
+                    <img src="{% static exercise.image_url %}" class="card-img-top card-img" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ exercise.name }}</h5>
                         <p class="card-text">{{ exercise.description }}</p>
+                    </div>
+                    <div class="card-footer mt-auto">
                         <a href="{{ exercise.url }}" class="btn btn-primary">Comenzar</a>
                     </div>
                 </div>
