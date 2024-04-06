@@ -1,5 +1,5 @@
 from math import floor
-from models import *
+from .models import *
 import random
 
 # Create your views here.

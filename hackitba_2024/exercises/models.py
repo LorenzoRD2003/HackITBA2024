@@ -29,7 +29,7 @@ class Exercise(models.Model):
     name = models.CharField(max_length=255, primary_key = True)
     title = models.CharField(max_length=255)
     description = models.TextField()
-    type = models.CharField(max_length=255, choices=EXERCISE_TYPES)
+    type = models.CharField(max_length=255)
     image = models.CharField(max_length=255)
     difficulty = models.IntegerField(default=0)
 
@@ -110,8 +110,8 @@ class Achievement(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
     description = models.TextField()
     limit = models.IntegerField(default=0)
-    type = models.CharField(max_length=255, choices=ACHIEVEMENT_TYPES, blank=True)
-    exer_difficulty = models.IntegerField(default=None, choices=EXERCISE_DIFFICULTIES, blank=True)
+    type = models.CharField(max_length=255, blank=True)
+    exer_difficulty = models.IntegerField(default=None, blank=True)
     exer_type = models.CharField
 
     def get_name(self):
