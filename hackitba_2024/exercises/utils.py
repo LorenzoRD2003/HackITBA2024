@@ -160,3 +160,17 @@ def read_and_parse_ex2(filename, amount):
   for p in parsed:
     p["options"] = random.sample(p["options"], k = len(p["options"]))
   return parsed
+
+def read_and_parse_ex3(filename, amount):
+  try:
+    with open(f'../texto/{filename}.txt', 'r') as file:
+      text_content = file.read().upper().split('\n')
+  except FileNotFoundError:
+    return []
+  filtered = random.sample(text_content, k = amount)
+  splitted = list(map(lambda phrase: list(phrase.split(' ')), filtered))
+  without_spaces = list(map(lambda phrase: phrase.replace(' ', ''), filtered))
+  return {
+    "original": filtered,
+    "without_spaces": without_spaces
+  }

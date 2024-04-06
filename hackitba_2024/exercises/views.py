@@ -171,9 +171,17 @@ class ExerciseThreeView(LoginRequiredMixin, View):
     exercise = Exercise.objects.get(pk = exercise_name)
     
     exercise_data = exercise.generate_object(user)
+    difficulty = exercise.get_difficulty()
+    if (difficulty == BEGINNER):
+      questions = read_and_parse_ex3("ex3", 1)
+    elif (difficulty == INTERMEDIATE):
+      questions = read_and_parse_ex3("ex3", 4)
+    elif (difficulty == ADVANCED):
+      questions = read_and_parse_ex3("ex3", 10)
     
-    return render(request, "ex1.html", {
-      'exercise_data': exercise_data
+    return render(request, "ex2.html", {
+      'exercise_data': exercise_data,
+      "questions": questions
     })
 
 class ExerciseFourView(LoginRequiredMixin, View):

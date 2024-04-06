@@ -7,11 +7,6 @@ class UserProfile(models.Model):
   date_of_birth = models.DateField()
   streak = models.IntegerField(default=0)
   entered_today = models.BooleanField(default=0)
-  FOCUS_CHOICES = (
-    ('dyslexia', 'Dislexia'),
-    ('alzheimer', "Alzheimer"),
-  )
-  focus = models.CharField(max_length=200, choices=FOCUS_CHOICES)
   
   def __str__(self):
     return self.user.username
@@ -33,9 +28,3 @@ class UserProfile(models.Model):
   
   def set_entered_today(self, value):
     self.entered_today = value
-  
-  def get_focus(self):
-    return self.focus[1]
-  
-  def set_focus(self, value):
-    self.focus = value

@@ -88,7 +88,6 @@ class UserExercise(models.Model):
 
 
 # Achievements
-
 STREAK = 'streak'
 ACHIV_AMOUNT = 'achiv_amount'
 EXER_AMOUNT = 'exer_amount'
