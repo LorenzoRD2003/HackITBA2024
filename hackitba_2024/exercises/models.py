@@ -43,12 +43,30 @@ class Achievement(models.Model):
     description = models.TextField()
     limit = models.IntegerField(default=0)
     type = models.CharField(max_length=255, choices=ACHIEVEMENT_TYPES)
+
+    def get_limit(self):
+        return self.limit
     
-    @property
-    def is_completed(self):
-        return self.progress == 100
+    def set_limit(self, value):
+        self.limit = value
+    
+    def get_type(self):
+        return self.type
+    
+    def set_type(self, value)
+        self.type = value
     
 class UserAchievement(models.Model):
     user = models.ForeignKey(UserProfile)
     achievement = models.ForeignKey(Achievement)
     progress = models.IntegerField(default=0)
+
+    def get_progress(self):
+        return self.progress
+
+    def set_progress(self, value)
+        self.progress = value
+
+    @property
+    def is_completed(self):
+        return self.progress == 100
