@@ -57,6 +57,6 @@ class Achievement(models.Model):
     
 # Represents an instance of a specific achievement for a specific user.
 class UserAchievement(models.Model):
-    user = models.ForeignKey(UserProfile)
-    achievement = models.ForeignKey(Achievement)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    achievement = models.ForeignKey(Achievement, on_delete=models.CASCADE)
     progress = models.IntegerField(default=0)
