@@ -75,7 +75,7 @@ class ExerciseView(LoginRequiredMixin, View):
     ]
     
     # Later, we can make filters on the next line
-    exercises = list(Exercise.object.all())
+    exercises = list(Exercise.objects.all())
     
     db_list = list(map(lambda exer: exer.generate_object(user), exercises))
     return render(request, 'exercises.html', {
@@ -114,7 +114,7 @@ class AchievementView(LoginRequiredMixin, View):
     user = UserProfile.objects.get(pk = request.user.username)
     
     # Later, we can make filters on the next line
-    achievements = list(Achievement.object.all())
+    achievements = list(Achievement.objects.all())
     
     db_list = list(map(lambda achiv: achiv.generate_object(user), achievements))
     return render(request, 'achievements.html', {
