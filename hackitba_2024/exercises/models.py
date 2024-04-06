@@ -1,6 +1,8 @@
 from django.db import models
 from user_auth.models import *
 
+# Exercises
+
 MEMORY = 'memory'
 VISUALIZATION = 'visualization'
 
@@ -12,13 +14,18 @@ EXERCISE_TYPES = {
 }
 
 class Exercise(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField()
     type = models.CharField(max_length=255, choices=EXERCISE_TYPES)
 
-    class Meta:
-        abstract = True
+# Represents an instance of a specific exercise for a specific user.
+class UserExercise(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
+    is_solved = models.BooleanField(default=False)
+
+
+# Achievements
 
 STREAK = 'streak'
 ACHIV_AMOUNT = 'achiv_amount'
@@ -30,7 +37,7 @@ EXER_DIFF_TYPE = 'exer_diff_type'
 VALID_ACHIEVEMENTS = [STREAK, ACHIV_AMOUNT, EXER_AMOUNT, EXER_DIFF, EXER_TYPE, EXER_DIFF_TYPE]
 
 ACHIEVEMENT_TYPES = {
-    STREAK: '',
+    STREAK: 'Racha',
     ACHIV_AMOUNT: '',
     EXER_AMOUNT: '',
     EXER_DIFF: '',
@@ -56,6 +63,7 @@ class Achievement(models.Model):
     def set_type(self, value):
         self.type = value
     
+# Represents an instance of a specific achievement for a specific user.
 class UserAchievement(models.Model):
     user = models.ForeignKey(UserProfile)
     achievement = models.ForeignKey(Achievement)
