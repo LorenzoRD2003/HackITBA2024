@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+body {
+    background: #2f3e45;
+    color: #e5dfd5;
+  }
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+.logo{
+  font-family: "Titan One", sans-serif;
+  color:inherit;
+  text-decoration: none;
+  font-size: xx-large; 
+}
+
+.nav-link {
+  color: whitesmoke;
+  
+}
+
+.nav-separator {
+  display: flex;
+  align-items: center;
+}
+.nav-separator::after {
+  content: '|';
+  padding: 0 10px;
+  color: #2f3e45; /* Adjust color as needed */
+}
+
+header {
+  background-color: #222e34;
+}

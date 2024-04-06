@@ -4,9 +4,9 @@
   {% load static %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../static/img/1.png" />
   <title>Login</title>
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
   <div class="container">
@@ -24,34 +24,34 @@
             {% csrf_token %}
             <div class="input-boxes">
               <div class="input-box">
-                <input type="text" name="username" placeholder="Ingrese su mail" required>
+                <input type="text" name="username" placeholder="Nombre de usuario" required>
               </div>
               <div class="input-box">
-                <input type="password" name="password" placeholder="Ingrese su contrasena" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
               </div>
               <div class="button input-box">
                 <input type="submit" value="Submit">
               </div>
-              <div class="text sign-up-text">Todavia no tienes cuenta? <label for="flip">Crea una</label></div>
+              <div class="text sign-up-text">¿Todavía no tenés cuenta? <label for="flip">Creá una</label></div>
             </div>
           </form>
         </div>
         <div class="signup-form">
-          <div class="title">Crea Usuario</div>
+          <div class="title">Creá Usuario</div>
           <form method="post" action="{% url 'register' %}">
             {% csrf_token %}
             <div class="input-boxes">
               <div class="input-box">
-                <input type="text" name="email" placeholder="Ingrese su mail" required>
+                <input type="text" name="email" placeholder="Correo electrónico" required>
               </div>
               <div class="input-box">
-                <input type="text" name="username" placeholder="Ingrese nombre de Usuario" required>
+                <input type="text" name="username" placeholder="Nombre de usuario" required>
               </div>
               <div class="input-box">
-                <input type="password" name="password" placeholder="Ingrese contrasena" required>
+                <input type="password" name="password" placeholder="Contrasena" required>
               </div>
               <div class="input-box">
-                <input type="date" name="date_of_birth" placeholder="Ingrese su edad" required>
+                <input type="date" name="date_of_birth" placeholder="Fecha de nacimiento" required>
               </div>
               <div class="input-box">
                 <select name="focus" required>
@@ -62,7 +62,7 @@
               <div class="button input-box">
                 <input type="submit" value="Submit">
               </div>
-              <div class="text sign-up-text">Ya tienes una cuenta? <label for="flip">Iniciar Sesion</label></div>
+              <div class="text sign-up-text">¿Ya tenés una cuenta? <label for="flip">Iniciar sesión</label></div>
             </div>
           </form>
         </div>

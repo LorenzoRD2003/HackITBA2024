@@ -1,0 +1,27 @@
+.scrollable-grid {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    height: 90vh; /* Fill all available vertical space */
+    scrollbar-width: thick; /* Make the scrollbar thicker */
+}
+.scrollable-grid::-webkit-scrollbar {
+    width: 20px; /* Make the scrollbar wider for WebKit browsers */
+}
+.scrollable-grid .card {
+    flex: 0 0 auto;
+    width: 18rem; /* Set your desired card width */
+    margin-right: 10px; /* Adjust spacing between cards */
+    height: 100%; /* Make each card the same height */
+    display: flex;
+    flex-direction: column;
+}
+.scrollable-grid .card-body {
+    flex-grow: 1; /* Make the card body fill the remaining space */
+}
+
+.card-img {
+    width: 100%; /* Make the image fill its container */
+    height: 250px; /* Set a fixed height for the image */
+    object-fit: cover; /* Ensure the image covers the container */
+}
