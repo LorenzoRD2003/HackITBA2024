@@ -1,6 +1,4 @@
-from django.shortcuts import render
 from math import floor
-
 from models import *
 
 # Create your views here.
@@ -8,9 +6,9 @@ def percent_calc(act, total):
   return min(100, floor(act / total * 100))
 
 def update_progress(username, achiv_name):
-  user = User.objects.filter(user_id = username)
-  achiv = Achievement.objects.filter(achievement_id = achiv_name)
-  user_achiv = UserAchievement.objects.filter(user_id = username, achievement_id = achiv_name)
+  user = User.objects.get(pk = username)
+  achiv = Achievement.objects.get(pk = achiv_name)
+  user_achiv = UserAchievement.objects.filter(user_id = username, achievement_id = achiv_name).first()
   
   if (user_achiv.is_completed()):
     return
@@ -39,9 +37,16 @@ def update_progress(username, achiv_name):
 
 STREAK_ACHIEVEMENTS_DAYS = (5, 10, 25, 50, 100, 365)
 
+def increase_streak(username):
+  user = User.objects.get(pk = username)
+  user.set_streak(user.set_streak() + 1)
+  user.save()
+  for s in STREAK_ACHIEVEMENTS_DAYS:
+    update_progress(username, f"STREAK_{s}")
+
 # Function to be executed every day
 def remove_streak(username):
-  user = User.objects.filter(user_id = username)
+  user = User.objects.get(pk = username)
   user.set_streak(0)
   user.save()
   for s in STREAK_ACHIEVEMENTS_DAYS:
@@ -54,3 +59,63 @@ def change_day():
     else:
       user.set_entered_today(False)
       user.save()
+
+def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_difficulty="", achiv_exer_type=""):
+  if (achiv_type not in VALID_ACHIEVEMENTS): # ERROR
+    return print("Invalid achievement type.")
+  achiv_name = f"{achiv_type}_{achiv_limit}"
+  Achievement.objects.create(
+    name = achiv_name,
+    description = achiv_description,
+    limit = achiv_limit,
+    type = achiv_type,
+    exer_difficulty = achiv_exer_difficulty,
+    exer_type = achiv_exer_type
+  )
+
+def modify_achievement(achiv_name, new_achiv_description, new_achiv_limit, new_achiv_type):
+  if (new_achiv_type not in VALID_ACHIEVEMENTS): # ERROR
+    return print("Invalid achievement type.")
+  new_achiv_name = f"{new_achiv_type}_{new_achiv_limit}"
+  achiv = Achievement.objects.get(pk = achiv_name)
+  achiv.set_name(new_achiv_name)
+  achiv.set_description(new_achiv_description)
+  achiv.set_limit(new_achiv_limit)
+  achiv.set_type(new_achiv_type)
+  achiv.save()
+
+def delete_achievement(achiv_name):
+  achiv = Achievement.objects.get(pk = achiv_name)
+  achiv.delete()
+
+def create_exercise(exer_description, exer_difficulty, exer_type):
+  if (exer_difficulty not in VALID_DIFFICULTIES):
+    return print("Invalid exercise difficulty.")
+  if (exer_type not in VALID_EXERCISES):
+    return print("Invalid exercise type.")
+  exer_name = f"{exer_type}_{exer_difficulty}"
+  Exercise.objects.create(
+    name = exer_name,
+    description = exer_description,
+    difficulty = exer_difficulty,
+    type = exer_type
+  )
+
+def modify_exercise(exer_name, new_exer_description, new_exer_difficulty, new_exer_type):
+  if (new_exer_difficulty not in VALID_DIFFICULTIES):
+    return print("Invalid exercise difficulty.")
+  if (new_exer_type not in VALID_EXERCISES):
+    return print("Invalid exercise type.")
+  new_exer_name = f"{new_exer_type}_{new_exer_difficulty}"
+  exercise = Exercise.objects.get(pk = exer_name)
+  exercise.set_name(new_exer_name)
+  exercise.set_description(new_exer_description)
+  exercise.set_difficulty(new_exer_difficulty)
+  exercise.set_type(new_exer_type)
+  exercise.save()
+
+def delete_exercise(exer_name):
+  exercise = Exercise.objects.get(pk = exer_name)
+  exercise.delete()
+
+# Cuando se abre el servidor:

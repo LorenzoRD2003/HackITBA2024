@@ -9,7 +9,13 @@ class UserProfile(models.Model):
   entered_today = models.BooleanField(default=0)
 
   def __str__(self):
-        return self.user.username
+    return self.user.username
+
+  def get_username(self):
+    return self.username
+  
+  def get_date_of_birth(self):
+    return self.date_of_birth
 
   def get_streak(self):
     return self.streak
