@@ -20,24 +20,35 @@ class Exercise(models.Model):
     class Meta:
         abstract = True
 
-COMPLETED_10 = 'completed_10'
-COMPLETED_20 = 'completed_20'
+STREAK = 'streak'
+ACHIEV_AMOUNT = 'achiev_amount'
+EXER_AMOUNT = 'exer_amount'
+EXER_DIFF = 'exer_diff'
+EXER_TYPE = 'exer_type'
+EXER_DIFF_TYPE = 'exer_diff_type'
 
-VALID_ACHIEVEMENTS = [COMPLETED_10, COMPLETED_20]
+VALID_ACHIEVEMENTS = [STREAK, ACHIEV_AMOUNT, EXER_AMOUNT, EXER_DIFF, EXER_TYPE, EXER_DIFF_TYPE]
 
 ACHIEVEMENT_TYPES = {
-    COMPLETED_10: 'Completá 10 ejercicios',
-    COMPLETED_20: 'Completá 20 ejercicios'
+    STREAK: '',
+    ACHIEV_AMOUNT: '',
+    EXER_AMOUNT: '',
+    EXER_DIFF: '',
+    EXER_TYPE: '',
+    EXER_DIFF_TYPE: '',
 }
 
 class Achievement(models.Model):
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, primary_key=True)
     description = models.TextField()
-    progress = models.IntegerField(default=0)
-    limits = models.IntegerField(default=0)
+    limit = models.IntegerField(default=0)
     type = models.CharField(max_length=255, choices=ACHIEVEMENT_TYPES)
     
     @property
     def is_completed(self):
         return self.progress == 100
+    
+class UserAchievement(models.Model):
+    user = models.ForeignKey(UserProfile)
+    achievement = models.ForeignKey(Achievement)
+    progress = models.IntegerField(default=0)
