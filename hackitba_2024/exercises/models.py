@@ -21,17 +21,17 @@ class Exercise(models.Model):
         abstract = True
 
 STREAK = 'streak'
-ACHIEV_AMOUNT = 'achiev_amount'
+ACHIV_AMOUNT = 'achiv_amount'
 EXER_AMOUNT = 'exer_amount'
 EXER_DIFF = 'exer_diff'
 EXER_TYPE = 'exer_type'
 EXER_DIFF_TYPE = 'exer_diff_type'
 
-VALID_ACHIEVEMENTS = [STREAK, ACHIEV_AMOUNT, EXER_AMOUNT, EXER_DIFF, EXER_TYPE, EXER_DIFF_TYPE]
+VALID_ACHIEVEMENTS = [STREAK, ACHIV_AMOUNT, EXER_AMOUNT, EXER_DIFF, EXER_TYPE, EXER_DIFF_TYPE]
 
 ACHIEVEMENT_TYPES = {
     STREAK: '',
-    ACHIEV_AMOUNT: '',
+    ACHIV_AMOUNT: '',
     EXER_AMOUNT: '',
     EXER_DIFF: '',
     EXER_TYPE: '',
