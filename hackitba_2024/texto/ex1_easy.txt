@@ -1,0 +1,15 @@
+Abuela,Atuela
+Mesa,Meza
+Catetera,Cafetera
+Gaton,Ratón
+Andador,Candado
+Disco,Lisco
+Catiseta,Camiseta
+Furgoneta,Fregoneta
+Teléfono,Teletono
+Lámpara,Lámtara,
+Pecera,Perera
+Camioneta,Camiopera
+Hermano,Fermano
+Coche,Toche
+Televisión,Tetevisión
