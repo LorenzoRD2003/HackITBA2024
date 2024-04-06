@@ -1,6 +1,7 @@
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import *
 
-class HomeView(View):
-  pass
+class HomeView(LoginRequiredMixin, View):
+  
