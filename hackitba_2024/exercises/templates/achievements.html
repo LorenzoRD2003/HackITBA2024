@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
 
 {% block title %}Info{% endblock %}
-
+{%block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% endblock head %}
 {% block content %}
-    <h1>Hello World</h1>
+<div class="container logros">
+    <h1>Acá podes ver tu progreso:</h1>
+    <div class="row">
+        <!-- escribir el for de los logros en esta linea ahora dejo esto de ejemplo -->
+        <div class="col-sm">
+            <h3>Racha 5 dias</h3>
+            <label> <i class="bi bi-trophy"></i> <progress max="100" value="20">20%</progress></label>
+        </div> 
+        <div class="col-sm">
+            <h3>Racha 5 dias</h3>
+            <label> <i class="bi bi-trophy"></i> <progress max="100" value="40">40%</progress></label>
+        </div>
+        <div class="col-sm">
+            <h3>Racha 5 dias</h3>
+            <label> <i class="bi bi-trophy"></i> <progress max="100" value="70">70%</progress></label>
+        </div>
+        <div class="col-sm">
+            <h3>Racha 5 dias</h3>
+            <label> <i class="bi bi-trophy"></i> <progress max="100" value="100">100%</progress></label>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
