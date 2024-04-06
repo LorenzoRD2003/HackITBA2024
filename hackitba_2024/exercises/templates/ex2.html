@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Ejercicio{% endblock %}
+
+{% block content %}
+  {{ exercise_data.name }}
+  {{ exercise_data.description }}
+  {{ exercise_data.difficulty }}
+  {{ exercise_data.type }}
+  {{ exercise_data.is_solved }}
+{% endblock %}

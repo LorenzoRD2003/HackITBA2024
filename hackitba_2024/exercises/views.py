@@ -7,45 +7,170 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
+from ..user_auth.models import *
 from .models import *
+from .utils import *
 
 class InfoView(LoginRequiredMixin, View):
-    def get(self, request):
-        return render(request, 'info.html')
+  def get(self, request):
+    return render(request, 'info.html')
 
 
 class ExerciseView(LoginRequiredMixin, View):
-    def get(self, request):
-        all_exercises = Exercise.objects.all()
-        exercise_list = []
-
-        context = {'exercise_list': exercise_list}
-        return render(request, 'exercises.html', context)
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    # Dummy exercise data for testing
+    exercise_list = [
+      {
+        'name': 'Exercise 1',
+        'description': 'Description for Exercise 1',
+        'difficulty': 'Difficulty for exercise',
+        'image_url': 'img/rubik.png',
+        'type': 'Type for exercise',
+        'is_solved': 0,
+        'url': '/exercise/1'
+      },
+      {
+        'name': 'Exercise 2',
+        'description': 'Description for Exercise 2',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/2'
+      },
+      {
+        'name': 'Exercise 3',
+        'description': 'Description for Exercise 3',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/3'
+      },
+      {
+        'name': 'Exercise 1',
+        'description': 'Description for Exercise 1',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/1'
+      },
+      {
+        'name': 'Exercise 2',
+        'description': 'Description for Exercise 2',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/2'
+      },
+      {
+        'name': 'Exercise 3',
+        'description': 'Description for Exercise 3',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/3'
+      },
+      {
+        'name': 'Exercise 1',
+        'description': 'Description for Exercise 1',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/1'
+      },
+      {
+        'name': 'Exercise 2',
+        'description': 'Description for Exercise 2',
+        'image_url': 'img/rubik.png',
+        'url': '/exercise/2'
+      },
+      {
+        'name': 'Exercise 3',
+        'description': 'Description for Exercise 3',
+        'image_url': 'img/crossword.png',
+        'url': '/exercise/3'
+      }
+    ]
+    
+    # Later, we can make filters on the next line
+    exercises = list(Exercise.object.all())
+    
+    db_list = list(map(lambda exer: exer.generate_object(user), exercises))
+    return render(request, 'exercises.html', {
+      'exercise_list': db_list
+    })
 
 class AchievementView(LoginRequiredMixin, View):
-    def get(self, request):
-        all_achievements = Achievement.objects.all()
-
-        return render(request, 'achievements.html')
+  def get(self, request):
+    achievement_list = [
+      {
+        'name': 'Achievement 1',
+        'description': 'Description for Achievement 1',
+        'difficulty': 'BEGINNER',
+        'progress': 0,
+        'type': '...',
+        'url': '/exercise/1'
+      },
+      {
+        'name': 'Exercise 2',
+        'description': 'Description for Exercise 2',
+        'difficulty': 'INTERMEDIATE',
+        'progress': 0,
+        'type': '...',
+        'url': '/exercise/2'
+      },
+      {
+        'name': 'Exercise 3',
+        'description': 'Description for Exercise 3',
+        'difficulty': 'ADVANCED',
+        'progress': 0,
+        'type': '...',
+        'url': '/exercise/3'
+      }
+    ]
     
-class OpenAIView(LoginRequiredMixin, View):
-    def post(self, request):
-        message = json.loads(request.body)['message']
+    user = UserProfile.objects.get(pk = request.user.username)
+    
+    # Later, we can make filters on the next line
+    achievements = list(Achievement.object.all())
+    
+    db_list = list(map(lambda achiv: achiv.generate_object(user), achievements))
+    return render(request, 'achievements.html', {
+      'achievement_list': db_list
+    })
 
-        if 'api_used' in request.session:
-            ai_response = "IMPLENTACION A FUTURO: Integrar API de OpenAI"
-            return JsonResponse({'response': ai_response})
+class ExerciseOneView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })
 
-        sleep(2)
+class ExerciseTwoView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })
 
-        ai_responses = ["La dislexia es un trastorno que afecta la capacidad de leer y escribir con fluidez. Las personas con dislexia suelen tener dificultades para reconocer palabras, especialmente en textos largos o complejos. El apoyo y la comprensión son fundamentales para quienes viven con esta condición. ¿Qué más te gustaría saber al respecto?",
-                        "La dislexia es una condición que afecta la forma en que el cerebro procesa el lenguaje escrito, lo que puede dificultar la lectura, la escritura y la ortografía para algunas personas. Con el apoyo adecuado y estrategias específicas, las personas con dislexia pueden aprender a manejar sus desafíos y tener éxito académico y personal. ¿Hay algo más específico que te interese sobre este tema?",
-                        "La dislexia es un trastorno del aprendizaje que afecta la lectura, la escritura y la ortografía. Las personas con dislexia pueden tener dificultades para reconocer palabras, recordar la secuencia de letras o comprender el significado de lo que leen. Es importante ofrecerles apoyo individualizado y herramientas adaptativas para ayudarles a superar estos desafíos y alcanzar su máximo potencial. ¿Hay algo más que te gustaría saber sobre la dislexia?",
-"El Alzheimer es una enfermedad neurodegenerativa que afecta la memoria, el pensamiento y el comportamiento de las personas. A medida que avanza, puede dificultar las tareas cotidianas y la comunicación. Es fundamental brindar cuidados compasivos y adaptar el entorno para apoyar a quienes viven con esta enfermedad. ¿Te interesa saber más detalles sobre el Alzheimer y cómo se maneja?",
-                                  "El Alzheimer es una enfermedad progresiva que afecta la memoria, el pensamiento y la capacidad de realizar actividades diarias. Las personas con Alzheimer pueden experimentar dificultades para recordar información reciente, reconocer rostros familiares o tomar decisiones. El apoyo emocional, la estimulación cognitiva y la atención médica especializada son clave para mejorar su calidad de vida. ¿Quieres saber más sobre cómo se diagnostica y trata el Alzheimer?",
-                                  "El Alzheimer es una enfermedad neurodegenerativa que afecta principalmente a la memoria y otras funciones cognitivas. Con el tiempo, puede causar dificultades en la comunicación, la toma de decisiones y el manejo de actividades diarias. Es importante ofrecer un ambiente seguro y comprensivo a las personas con Alzheimer, así como brindar apoyo a sus cuidadores y familiares. ¿Te gustaría saber más acerca de los síntomas y el cuidado del Alzheimer?"]
+class ExerciseThreeView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })
 
-        request.session['api_used'] = True
-
-        ai_response = ai_responses[math.ceil(random.random() * 5)]
-        return JsonResponse({'response': ai_response})
+class ExerciseFourView(LoginRequiredMixin, View):
+  def get(self, request):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise_name = request.GET.get('exercise')
+    exercise = Exercise.objects.get(pk = exercise_name)
+    
+    exercise_data = exercise.generate_object(user)
+    
+    return render(request, "ex1.html", {
+      'exercise_data': exercise_data
+    })

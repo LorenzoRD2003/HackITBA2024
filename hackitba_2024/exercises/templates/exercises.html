@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Info{% endblock %}
+{% block title %}Ejercicios{% endblock %}
 {% block head %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/grid.css' %}">
@@ -8,23 +8,23 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="scrollable-grid">
-                {% for exercise in exercise_list %}
-                <div class="card">
-                    <img src="{% static exercise.image_url %}" class="card-img-top card-img" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ exercise.name }}</h5>
-                        <p class="card-text">{{ exercise.description }}</p>
-                    </div>
-                    <div class="card-footer mt-auto">
-                        <a href="{{ exercise.url }}" class="btn btn-primary">Comenzar</a>
-                    </div>
-                </div>
-                {% endfor %}
+  <div class="row">
+    <div class="col">
+      <div class="scrollable-grid">
+        {% for exercise in exercise_list %}
+        <div class="card">
+          <img src="{% static exercise.image_url %}" class="card-img-top card-img" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ exercise.name }}</h5>
+            <p class="card-text">{{ exercise.description }}</p>
+          </div>
+            <div class="card-footer mt-auto">
+              <a href="{{ exercise.url }}" class="btn btn-primary">Comenzar</a>
             </div>
         </div>
+        {% endfor %}
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

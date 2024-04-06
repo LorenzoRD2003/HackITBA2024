@@ -60,6 +60,7 @@ def change_day():
       user.set_entered_today(False)
       user.save()
 
+
 def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_difficulty="", achiv_exer_type=""):
   if (achiv_type not in VALID_ACHIEVEMENTS): # ERROR
     return print("Invalid achievement type.")
@@ -93,7 +94,8 @@ def create_exercise(exer_description, exer_difficulty, exer_type):
     return print("Invalid exercise difficulty.")
   if (exer_type not in VALID_EXERCISES):
     return print("Invalid exercise type.")
-  exer_name = f"{exer_type}_{exer_difficulty}"
+  cant = Exercise.objects.filter(difficulty = exer_difficulty, type = exer_type).count()
+  exer_name = f"{exer_type}_{exer_difficulty}_{cant+1}"
   Exercise.objects.create(
     name = exer_name,
     description = exer_description,
@@ -101,21 +103,6 @@ def create_exercise(exer_description, exer_difficulty, exer_type):
     type = exer_type
   )
 
-def modify_exercise(exer_name, new_exer_description, new_exer_difficulty, new_exer_type):
-  if (new_exer_difficulty not in VALID_DIFFICULTIES):
-    return print("Invalid exercise difficulty.")
-  if (new_exer_type not in VALID_EXERCISES):
-    return print("Invalid exercise type.")
-  new_exer_name = f"{new_exer_type}_{new_exer_difficulty}"
-  exercise = Exercise.objects.get(pk = exer_name)
-  exercise.set_name(new_exer_name)
-  exercise.set_description(new_exer_description)
-  exercise.set_difficulty(new_exer_difficulty)
-  exercise.set_type(new_exer_type)
-  exercise.save()
-
 def delete_exercise(exer_name):
   exercise = Exercise.objects.get(pk = exer_name)
   exercise.delete()
-
-# Cuando se abre el servidor:

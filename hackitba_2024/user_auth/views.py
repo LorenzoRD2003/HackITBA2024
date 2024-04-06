@@ -43,9 +43,10 @@ class CustomRegisterView(View):
         try:
             user = User.objects.create_user(username=username, password=password, email=email)
             UserProfile.objects.create(
-                user=user,
-                date_of_birth=date_of_birth,
-                streak=0
+                username = user.username,
+                user = user,
+                date_of_birth = date_of_birth,
+                streak = 0
             )
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
