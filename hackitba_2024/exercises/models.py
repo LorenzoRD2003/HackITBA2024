@@ -2,11 +2,21 @@ from django.db import models
 from user_auth.models import *
 
 # Exercises
+BEGINNER = 0
+INTERMEDIATE = 1
+ADVANCED = 2
 
 MEMORY = 'memory'
 VISUALIZATION = 'visualization'
 
+VALID_DIFFICULTIES = [BEGINNER, INTERMEDIATE, ADVANCED]
 VALID_EXERCISES = [MEMORY, VISUALIZATION]
+
+EXERCISE_DIFFICULTIES = {
+    BEGINNER: 'Principiante',
+    INTERMEDIATE: "Intermedio",
+    ADVANCED: "Avanzado"
+}
 
 EXERCISE_TYPES = {
     MEMORY: 'Memoria',
@@ -14,9 +24,22 @@ EXERCISE_TYPES = {
 }
 
 class Exercise(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, primary_key = True)
     description = models.TextField()
     type = models.CharField(max_length=255, choices=EXERCISE_TYPES)
+    difficulty = models.IntegerField(default=0)
+
+    def get_type(self):
+        return self.type
+    
+    def set_type(self, value):
+        self.type = value
+    
+    def get_difficulty(self):
+        return self.difficulty
+    
+    def set_difficulty(self, value):
+        self.difficulty = value
 
 # Represents an instance of a specific exercise for a specific user.
 class UserExercise(models.Model):

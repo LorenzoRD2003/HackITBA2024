@@ -16,19 +16,23 @@ def update_progress(username, achiv_name):
     return
   
   if (achiv.get_type() == STREAK):
-    act = user.streak
+    act = user.get_streak()
   elif (achiv.get_type() == ACHIV_AMOUNT):
     act = UserAchievement.objects.filter(user_id = username).count()
   elif (achiv.get_type() == EXER_AMOUNT):
-    act = get_exer_amount(user)
+    act = UserExercise.objects.filter(user_id = username).count()
   elif (achiv.get_type() == EXER_DIFF):
-    act = get_exer_amount(user, exer_diff)
+    act = Exercise.objects.filter(userexercise__username=username,
+                                  userexercise__difficulty=achiv.get_difficulty()).count()
   elif (achiv.get_type() == EXER_TYPE):
-    act = get_exer_amount(user, exer_type)
+    act = Exercise.objects.filter(userexercise__username=username,
+                                  userexercise__type=achiv.get_type()).count()
   elif (achiv.get_type() == EXER_DIFF_TYPE):
-    act = get_exer_amount(user, exer_diff, exer_type)
+    act = Exercise.objects.filter(userexercise__username=username,
+                                  userexercise__difficulty=achiv.get_difficulty(),
+                                  userexercise__type=achiv.get_type()).count()
   
-  user_achiv.set_progress(percent_calc(act + 1, achiv.limit))
+  user_achiv.set_progress(percent_calc(act + 1, achiv.get_limit()))
   user_achiv.save()
   if (user_achiv.is_completed()):
     update_progress(user, ACHIV_AMOUNT)
