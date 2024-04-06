@@ -6,7 +6,7 @@ from .models import *
 
 class InfoView(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'view.html')
+        return render(request, 'info.html')
 
 
 class ExerciseView(LoginRequiredMixin, View):
