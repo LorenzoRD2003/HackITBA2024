@@ -53,7 +53,7 @@ class Achievement(models.Model):
     def get_type(self):
         return self.type
     
-    def set_type(self, value)
+    def set_type(self, value):
         self.type = value
     
 class UserAchievement(models.Model):
@@ -64,7 +64,7 @@ class UserAchievement(models.Model):
     def get_progress(self):
         return self.progress
 
-    def set_progress(self, value)
+    def set_progress(self, value):
         self.progress = value
 
     @property
