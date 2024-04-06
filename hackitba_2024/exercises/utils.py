@@ -173,3 +173,11 @@ def read_and_parse_ex3(filename, amount):
     "original": filtered,
     "without_spaces": without_spaces
   }
+
+def read_and_parse_ex4(filename):
+  try:
+    with open(f'../texto/{filename}.txt', 'r') as file:
+      text_content = file.read().upper().split('\n')
+  except FileNotFoundError:
+    return []
+  return random.sample(text_content, k = 1)[0]
