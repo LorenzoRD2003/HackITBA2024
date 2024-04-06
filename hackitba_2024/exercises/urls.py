@@ -1,8 +1,10 @@
 from django.urls import path, include
 from django.contrib import admin
 
-from .views import HomeView
+from .views import *
 
 urlpatterns = [
-     path('', HomeView.as_view(), name='home')
+     path('info/', InfoView.as_view(), name='info'),
+     path('achievements/', AchievementView.as_view(), name='achievement'),
+     path('exercise/', ExerciseView.as_view(), name='exercise')
 ]

@@ -1,12 +1,16 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from django.http import JsonResponse
 from .models import UserProfile
 
 class CustomLoginView(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect(reverse('info'))
+        
         return render(request, 'login.html')
 
     def post(self, request):
@@ -16,15 +20,19 @@ class CustomLoginView(View):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home') 
+            return redirect('info') 
         else:
             error_message = "Invalid credentials. Please try again."
             return render(request, 'login.html', {'error_message': error_message})
 
 class CustomRegisterView(View):
+    def get(self, request):
+        return render(request, 'login.html')
+    
     def post(self, request):
         username = request.POST.get('username')
         password = request.POST.get('password')
+        email = request.POST.get('email')
         date_of_birth = request.POST.get('date_of_birth')
         focus = request.POST.get('focus')
         
@@ -32,7 +40,7 @@ class CustomRegisterView(View):
             return JsonResponse({'error': 'Missing required fields'}, status=400)   
 
         try:
-            user = User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(username=username, password=password, email=email)
             UserProfile.objects.create(
                 user=user,
                 date_of_birth=date_of_birth,
@@ -42,4 +50,4 @@ class CustomRegisterView(View):
             return JsonResponse({'error': str(e)}, status=500)
         
         login(request, user)
-        return redirect('home')
+        return redirect('info')
