@@ -1,6 +1,6 @@
 # HackItba 2024
 
-##### [Como ejecutar](#running)
+### [Como ejecutar](#como-ejecutar)
 ----------
 ## CIFUMIND: Mantené tu cerebro activo
 CIFUMIND (Cuidado Integral para el Fortalecimiento Unificado de la Mente)
@@ -16,4 +16,4 @@ CIFUMIND es una aplicación web diseñada para brindar ejercicios cognitivos y s
 ### Próximos pasos
 
 ----------
-## Como correr {#running}
+## Como ejecutar
