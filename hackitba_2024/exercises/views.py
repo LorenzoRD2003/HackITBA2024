@@ -10,7 +10,32 @@ class InfoView(LoginRequiredMixin, View):
 
 
 class ExerciseView(LoginRequiredMixin, View):
-    pass
+    def get(self, request):
+        # Dummy exercise data for testing
+        exercise_list = [
+            {
+                'name': 'Exercise 1',
+                'description': 'Description for Exercise 1',
+                'image_url': '/path/to/image1.jpg',
+                'url': '/exercise/1'
+            },
+            {
+                'name': 'Exercise 2',
+                'description': 'Description for Exercise 2',
+                'image_url': '/path/to/image2.jpg',
+                'url': '/exercise/2'
+            },
+            {
+                'name': 'Exercise 3',
+                'description': 'Description for Exercise 3',
+                'image_url': '/path/to/image3.jpg',
+                'url': '/exercise/3'
+            }
+        ]
+
+        context = {'exercise_list': exercise_list}
+        return render(request, 'exercises.html', context)
 
 class AchievementView(LoginRequiredMixin, View):
-    pass
+    def get(self, request):
+        return render(request, 'achievements.html')
