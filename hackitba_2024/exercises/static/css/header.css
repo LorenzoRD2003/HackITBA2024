@@ -12,6 +12,7 @@ body {
     -moz-user-select: none;
     user-select: none;
   }
+
 .logo{
   font-family: "Titan One", sans-serif;
   color:inherit;
@@ -20,19 +21,29 @@ body {
 }
 
 .nav-link {
-  color: whitesmoke;
-  
+  padding: 0rem 15rem;
+  color: white;
+}
+
+.nav-link:hover {
+  color: #608D9F !important;
 }
 
 .nav-separator {
   display: flex;
   align-items: center;
 }
+
 .nav-separator::after {
   content: '|';
   padding: 0 10px;
-  color: #2f3e45; /* Adjust color as needed */
+  color: #2f3e45; 
 }
+
+.header {
+  margin: 0rem 1rem;
+}
+
 
 header {
   background-color: #222e34;

@@ -1,27 +1,32 @@
 .scrollable-grid {
-    display: flex;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     width: 100%;
-    height: 90vh; /* Fill all available vertical space */
-    scrollbar-width: thick; /* Make the scrollbar thicker */
+    height: 30rem;
+    margin-bottom: 5rem;
 }
-.scrollable-grid::-webkit-scrollbar {
-    width: 20px; /* Make the scrollbar wider for WebKit browsers */
-}
+
 .scrollable-grid .card {
-    flex: 0 0 auto;
-    width: 18rem; /* Set your desired card width */
-    margin-right: 10px; /* Adjust spacing between cards */
-    height: 100%; /* Make each card the same height */
-    display: flex;
-    flex-direction: column;
-}
-.scrollable-grid .card-body {
-    flex-grow: 1; /* Make the card body fill the remaining space */
+    width: 18rem; 
+    margin-right: 10px; 
+    height: 100%; 
 }
 
 .card-img {
-    width: 100%; /* Make the image fill its container */
-    height: 250px; /* Set a fixed height for the image */
-    object-fit: cover; /* Ensure the image covers the container */
+    width: 100%;
+    height: 250px;
+    object-fit: cover; 
+}
+
+.container-fluid {
+    padding: 5rem 20rem;
+}
+
+.btn {
+    background-color: #608D8F;
+}
+
+.btn:hover {
+    background-color: #89BAC8;
 }
