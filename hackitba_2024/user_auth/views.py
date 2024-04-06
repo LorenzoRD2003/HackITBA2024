@@ -7,6 +7,12 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
+import math
+import random
+
+from exercises.models import UserAchievement, Achievement
+from exercises.utils import create_achievement
+
 class CustomLoginView(View):
     def get(self, request):
         if request.user.is_authenticated:
@@ -35,14 +41,13 @@ class CustomRegisterView(View):
         password = request.POST.get('password')
         email = request.POST.get('email')
         date_of_birth = request.POST.get('date_of_birth')
-        focus = request.POST.get('focus')
         
-        if not (username and password and date_of_birth and focus):
+        if not (username and password and date_of_birth):
             return JsonResponse({'error': 'Missing required fields'}, status=400)   
 
         try:
             user = User.objects.create_user(username=username, password=password, email=email)
-            UserProfile.objects.create(
+            user_profile = UserProfile.objects.create(
                 username = user.username,
                 user = user,
                 date_of_birth = date_of_birth,
@@ -50,8 +55,11 @@ class CustomRegisterView(View):
             )
 
             # --- Crear todo ---
+            achivs = Achievement.objects.all()
 
-
+            for achiv in achivs:
+                print('Create user achievement')
+                UserAchievement.objects.create(user=user_profile, achievement=achiv, progress=math.floor(random.random() * achiv.limit))
 
             # --------
 

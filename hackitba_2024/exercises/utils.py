@@ -62,8 +62,8 @@ def change_day():
       user.save()
 
 
-def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_difficulty="", achiv_exer_type=""):
-  if (achiv_type not in VALID_ACHIEVEMENTS): # ERROR
+def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_difficulty=1):
+  if (achiv_type not in VALID_ACHIEVEMENTS):
     return print("Invalid achievement type.")
   achiv_name = f"{achiv_type}_{achiv_limit}"
   Achievement.objects.create(
@@ -72,7 +72,6 @@ def create_achievement(achiv_description, achiv_limit, achiv_type, achiv_exer_di
     limit = achiv_limit,
     type = achiv_type,
     exer_difficulty = achiv_exer_difficulty,
-    exer_type = achiv_exer_type
   )
 
 def delete_achievement(achiv_name):
@@ -82,10 +81,9 @@ def delete_achievement(achiv_name):
 def create_exercise(exer_title, exer_description, exer_difficulty, exer_type, exer_image):
   if (exer_difficulty not in VALID_DIFFICULTIES):
     return print("Invalid exercise difficulty.")
-  if (exer_type not in VALID_EXERCISES):
-    return print("Invalid exercise type.")
-  cant = Exercise.objects.filter(difficulty = exer_difficulty, type = exer_type).count()
-  exer_name = f"{exer_type}_{exer_difficulty}_{cant+1}"
+
+  cant = Exercise.objects.filter(difficulty = exer_difficulty).count()
+  exer_name = f"{exer_type}_{cant+1}"
   Exercise.objects.create(
     name = exer_name,
     title = exer_title,
@@ -107,16 +105,16 @@ def read_and_parse_ex1(filename, word_amount):
     return []
   filtered = random.sample(text_content, k = word_amount)
   parsed = list(map(lambda pair: tuple(pair.split(',')), filtered))
-  corrected = list(map(lambda p: (
-    {
+  corrected = list(map(lambda p: {
+    'first_option': {
       'text': p[0],
       'correct': True
     },
-    {
+    'second_option': {
       'text': p[1],
       'correct': False
     }
-  ), parsed))
+  }, parsed))
   reordered = list(map(lambda p: random.sample(p, k=len(p)), corrected))
   return reordered
 

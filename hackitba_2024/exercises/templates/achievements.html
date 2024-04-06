@@ -1,25 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}Logros{% endblock %}
-
+{% block title %}Info{% endblock %}
 {%block head %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/achievements.css' %}">
 {% endblock head %}
-
 {% block content %}
-{% for achiv in achievement_list  %}
-<div class="card-transparent">
-    <div class="card-header">{{achiv.name}}</div>
-    <div class="card-block "><div class="progress blue">
-        <span class="progress-left">
-            <span class="progress-bar"></span>
-                </span>
-                <span class="progress-right">
-                                  <span class="progress-bar"></span>
-                </span>
-                <div class="progress-value">{{achiv.progress}}%</div>
-              </div></div>
-{% endfor %}
+<div class="container logros">
+    <h1>Acá podes ver tu progreso:</h1>
+    <div class="row" >
+        {% for achiv in achievement_list  %}
+        <div class="col-sm ">
+            <h3>{{ achiv.name }}</h3>
+            <label> <i class="bi bi-trophy"></i> <progress max="{{ achiv.limit }}" value="{{ achiv.progress }}">{{achiv.progress}}%</progress></label>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
 {% endblock %}

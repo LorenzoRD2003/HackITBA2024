@@ -7,11 +7,13 @@ BEGINNER = 0
 INTERMEDIATE = 1
 ADVANCED = 2
 
-MEMORY = 'memory'
-VISUALIZATION = 'visualization'
+EX1: "ex1"
+EX2: "ex2"
+EX3: "ex3"
+EX4: "ex4"
 
 VALID_DIFFICULTIES = (NONE, BEGINNER, INTERMEDIATE, ADVANCED)
-VALID_EXERCISES = (MEMORY, VISUALIZATION)
+VALID_EXERCISES = (EX1, EX2, EX3, EX4)
 
 EXERCISE_DIFFICULTIES = {
     NONE: "NULL",
@@ -21,8 +23,10 @@ EXERCISE_DIFFICULTIES = {
 }
 
 EXERCISE_TYPES = {
-    MEMORY: 'Memoria',
-    VISUALIZATION: 'Visualización'
+    EX1: "Ejercicio 1",
+    EX2: "Ejercicio 2",
+    EX3: "Ejercicio 3",
+    EX4: "Ejercicio 4"
 }
 
 class Exercise(models.Model):
@@ -67,7 +71,7 @@ class Exercise(models.Model):
     # Util for returning exercise as an object and give it to the frontend
     def generate_object(self, user):
         user_exercise = UserExercise.objects.filter(
-            user_id = user.username,
+            user_id = user,
             exercise_id = self.name).first()
         return {
             'name': self.name,
@@ -112,7 +116,6 @@ class Achievement(models.Model):
     limit = models.IntegerField(default=0)
     type = models.CharField(max_length=255, blank=True)
     exer_difficulty = models.IntegerField(default=None, blank=True)
-    exer_type = models.CharField
 
     def get_name(self):
         return self.name
@@ -143,13 +146,15 @@ class Achievement(models.Model):
     # Util for returning achievement as an object and give it to the frontend
     def generate_object(self, user):
         user_achiv = UserAchievement.objects.filter(
-        user_id = user.username,
+        user_id = user,
         achievement_id = self.name).first()
+
+        print(f'{user_achiv} Hola Mundo')
+
         return {
             'name': self.name,
             'description': self.description,
             'exer_difficulty': self.exer_difficulty,
-            'exer_type': self.exer_type,
             'progress': user_achiv.progress,
             'type': self.type,
             'url': f'/exercise/{self.name}'
