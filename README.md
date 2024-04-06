@@ -1,2 +1,5 @@
-# HackITBA2024
-Projecto para el HackITBA2024
+# Nombre del proyecto: Maestro Cifu
+## Instrucciones para correr el proyecto.
+* Hola
+* Que
+* tal
