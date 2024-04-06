@@ -47,9 +47,20 @@ class ExerciseOneView(LoginRequiredMixin, View):
     exercise = Exercise.objects.get(pk = exercise_name)
     
     exercise_data = exercise.generate_object(user)
+    difficulty = exercise.get_difficulty()
+    if (difficulty == BEGINNER):
+      # Read and parse info from ex1_beginner.txt
+      questions = read_and_parse("ex1_beginner", 5)
+    elif (difficulty == INTERMEDIATE):
+      # Read and parse info from ex1_intermediate.txt
+      questions = read_and_parse("ex1_intermediate", 10)
+    elif (difficulty == ADVANCED):
+      # Read and parse info from ex1_advanced.txt
+      questions = read_and_parse("ex1_advanced", 20)
     
     return render(request, "ex1.html", {
-      'exercise_data': exercise_data
+      'exercise_data': exercise_data,
+      "questions": questions
     })
 
 class ExerciseTwoView(LoginRequiredMixin, View):

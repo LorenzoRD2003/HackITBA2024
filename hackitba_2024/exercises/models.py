@@ -26,8 +26,10 @@ EXERCISE_TYPES = {
 
 class Exercise(models.Model):
     name = models.CharField(max_length=255, primary_key = True)
+    title = models.CharField(max_length=255)
     description = models.TextField()
     type = models.CharField(max_length=255, choices=EXERCISE_TYPES)
+    image = models.CharField(max_length=255)
     difficulty = models.IntegerField(default=0)
     image_url = models.CharField(max_length=255, default='/')
 
@@ -36,6 +38,9 @@ class Exercise(models.Model):
     
     def set_name(self, value):
         self.name = value
+    
+    def get_title(self):
+        return self.title
     
     def get_description(self):
         return self.description
@@ -66,11 +71,12 @@ class Exercise(models.Model):
             exercise_id = self.name).first()
         return {
             'name': self.name,
+            'title': self.title,
             'description': self.description,
             'difficulty': self.difficulty,
-            'image_url': 'img/rubik.png',
             'type': self.type,
             'is_solved': user_exercise.is_solved,
+            'image': self.image,
             'url': f'/exercise/{self.name}'
         }
 
