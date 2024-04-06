@@ -16,19 +16,19 @@ class ExerciseView(LoginRequiredMixin, View):
             {
                 'name': 'Exercise 1',
                 'description': 'Description for Exercise 1',
-                'image_url': '/path/to/image1.jpg',
+                'image_url': 'img/crossword.png',
                 'url': '/exercise/1'
             },
             {
                 'name': 'Exercise 2',
                 'description': 'Description for Exercise 2',
-                'image_url': '/path/to/image2.jpg',
+                'image_url': 'img/crossword.png',
                 'url': '/exercise/2'
             },
             {
                 'name': 'Exercise 3',
                 'description': 'Description for Exercise 3',
-                'image_url': '/path/to/image3.jpg',
+                'image_url': 'img/crossword.png',
                 'url': '/exercise/3'
             }
         ]
