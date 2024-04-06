@@ -7,15 +7,18 @@
 {% endblock head %}
 {% block content %}
 <div class="container logros">
-    <h1>Acá podes ver tu progreso:</h1>
-    <div class="row" >
-        {% for achiv in achievement_list  %}
-        <div class="col-sm ">
-            <h3>{{ achiv.name }}</h3>
-            <label> <i class="bi bi-trophy"></i> <progress max="{{ achiv.limit }}" value="{{ achiv.progress }}">{{achiv.progress}}%</progress></label>
+    <h1>Progreso del usuario {{ username }}</h1>
+    <div class="row">
+        {% for achiv in achievement_list %}
+        <div class="col-sm">
+            <div class="text-center">
+                <h3>{{ achiv.description }}</h3>
+                <label><i class="bi bi-trophy"></i> <progress max="{{ achiv.limit }}" value="{{ achiv.progress }}">{{ achiv.progress }}%</progress></label> <!-- Progress label -->
+            </div>
         </div>
         {% endfor %}
     </div>
 </div>
+
 
 {% endblock %}

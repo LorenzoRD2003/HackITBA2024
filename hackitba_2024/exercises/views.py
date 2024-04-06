@@ -32,7 +32,8 @@ class AchievementView(LoginRequiredMixin, View):
     db_list = list(map(lambda achiv: achiv.generate_object(user), achievements))
 
     return render(request, 'achievements.html', {
-      'achievement_list': db_list
+      'achievement_list': db_list,
+      'username': request.user.username
     })
 
 class ExerciseOneView(LoginRequiredMixin, View):
