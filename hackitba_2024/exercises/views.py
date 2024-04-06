@@ -2,7 +2,6 @@ from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 
-from ..user_auth.models import *
 from .models import *
 from .utils import *
 
