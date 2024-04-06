@@ -168,7 +168,6 @@ def read_and_parse_ex3(filename, amount):
   except FileNotFoundError:
     return []
   filtered = random.sample(text_content, k = amount)
-  splitted = list(map(lambda phrase: list(phrase.split(' ')), filtered))
   without_spaces = list(map(lambda phrase: phrase.replace(' ', ''), filtered))
   return {
     "original": filtered,
