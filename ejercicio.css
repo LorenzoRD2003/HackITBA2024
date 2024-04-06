@@ -1,0 +1,10 @@
+.contenedorPalabras {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+  }
+  .imagen{
+    float: right;
+    width:350px;
+    height:350px;
+  }

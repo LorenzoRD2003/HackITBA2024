@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Info{% endblock %}
+{%block head%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/ejercicio.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="contenedorPalabras">
+<div class="form-check form-check-inline" >
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <label class="form-check-label" for="inlineRadio1">palabra1</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <label class="form-check-label" for="inlineRadio2">palabra2</label>
+</div>
+</div>
+<div >
+    <img src="{%static 'img/palabrasInventadas.png' %}"  class="imagen">
+                   
+</div>
+<div class=>
+    <a href="{{ exercise.url }}" class="btn ">Verificar</a>
+
+</div>
+{% endblock %}
