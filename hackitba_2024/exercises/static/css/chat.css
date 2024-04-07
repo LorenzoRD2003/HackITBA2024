@@ -11,7 +11,7 @@
     color: black;
 }
 .chat-popup .header {
-    background-color: #007bff;
+    background-color: #2f3245;
     color: #fff;
     padding: 10px;
     border-top-left-radius: 5px;
@@ -25,4 +25,8 @@
 .chat-popup .input-group {
     padding: 10px;
     border-top: 1px solid #ccc;
+}
+
+.btn-primary {
+    background-color: #2f3e45;
 }
