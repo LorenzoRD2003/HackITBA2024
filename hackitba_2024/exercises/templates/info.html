@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}Info{% endblock %}
+<link rel="stylesheet" href="../css/info.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.   11.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" />
+
 
 {% block head %}
 {% load static %}
@@ -8,11 +13,175 @@
 {% endblock head %}
 
 {% block content %}
-    <h1>Hello World</h1>
+<div class="container info" style="padding-top: 5rem;" id="accordion">
+    <h3 style="text-align: center;">Acá encontrarás información sobre la dislexia</h3>
+    <div class="card" style="background-color: #89BAC8;">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn" data-bs-toggle="collapse" data-bs-target="#que-es" aria-expanded="true"
+                    aria-controls="que-es">
+                    Qué es la dislexia
+                </button>
+            </h5>
+        </div>
+
+        <div id="que-es" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                La dislexia es un trastorno específico del aprendizaje que se caracteriza por un deterioro en la
+                capacidad de reconocer palabras, lectura lenta e insegura y escasa comprensión.
+                Este trastorno del neurodesarrollo se calcula que afecta aproximadamente a uno de cada diez niños. Para
+                hacer frente a esta situación y mejorar el aprendizaje es necesario detectar el trastorno de forma
+                temprana. Si bien la dislexia no tiene cura, la evaluación y la intervención temprana dan excelentes
+                resultados. Hay casos en los que, por años, la dislexia no se diagnostica y no se identifica hasta la
+                adultez, pero nunca es tarde para buscar ayuda.
+            </div>
+        </div>
+    </div>
+    <div class="card" style="background-color: #95C0CB;">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn" data-bs-toggle="collapse" data-bs-target="#sintomas" aria-expanded="true"
+                    aria-controls="sintomas">
+                    Síntomas
+                </button>
+            </h5>
+        </div>
+        <div id="sintomas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                Podemos separar los distintos síntomas según la etapa en la que se encuentra la persona: <br />
+                <strong>Antes de la escuela:</strong>
+                <ul>
+                    <li>Tarda en comenzar a hablar.</li>
+                    <li> Aprende palabras nuevas a un ritmo lento. </li>
+                    <li> Tiene problemas para formar palabras correctamente, por ejemplo, invierte los sonidos de las
+                        palabras o </li>
+                    <li> confunde palabras que suenan parecidas. </li>
+                    <li> Tiene problemas para recordar o nombrar letras, números y colores.</li>
+                    <li> Tiene dificultades para aprender canciones infantiles o jugar juegos de rimas.</li>
+                </ul>
+                <strong> Edad escolar:</strong>
+                <ul>
+                    <li>Un nivel de lectura muy por debajo del que se espera para su edad. </li>
+                    <li> Problemas para procesar y comprender lo que escucha.</li>
+                    <li> Dificultad para encontrar la palabra correcta o elaborar una respuesta a una pregunta.</li>
+                    <li> Problemas para recordar secuencias de cosas.</li>
+                    <li> Dificultad para ver (y, ocasionalmente, escuchar) similitudes y diferencias entre letras y
+                        palabras.</li>
+                    <li> Incapacidad para pronunciar una palabra desconocida.</li>
+                    <li> Dificultad para deletrear.</li>
+                    <li> Necesitar mucho tiempo para completar tareas que implican leer o escribir.</li>
+                    <li> Evitar actividades que requieran leer.</li>
+                </ul>
+                <strong>Adolescentes y adultos</strong>
+                <ul>
+                    <li>Dificultad para leer, incluso para leer en voz alta</li>
+                    <li>Lectura y escritura lentas y trabajosas</li>
+                    <li>Problemas de ortografía</li>
+                    <li>Evitar actividades que requieran leer</li>
+                    <li>Mala pronunciación de nombres o palabras, o dificultad para encontrar las palabras</li>
+                    <li>Necesitar mucho tiempo para completar tareas que implican leer o escribir</li>
+                    <li>Dificultad para resumir una historia</li>
+                    <li>Problemas para aprender un idioma extranjero</li>
+                    <li>Dificultad para entender problemas matemáticos</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="card" style="background-color: #89BAC8;">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn" data-bs-toggle="collapse" data-bs-target="#tipos" aria-expanded="false"
+                    aria-controls="tipos">
+                    Tipos de dislexia
+                </button>
+            </h5>
+        </div>
+        <div id="tipos" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                En primer lugar tenemos que diferenciar entre la dislexia adquirida y la dislexia evolutiva.
+                <ul>
+                    <li><strong> Adquirida:</strong> La dislexia aparece como consecuencia de algún tipo de lesión
+                        cerebral
+                        o enfermedad que altera las áreas del cerebro correspondientes. No es innata, la persona no nace
+                        con
+                        estas dificultades, sino que se hacen presentes después de la lesión.</li>
+                    <li><strong> Evolutiva:</strong> La dislexia aparece sin que ninguna lesión cerebral o enfermedad lo
+                        justifique. Es un tipo de dislexia innata, las dificultades se aprecian desde el primer momento.
+                    </li>
+                </ul>
+                Sin embargo, según los síntomas predominantes del paciente y de la ruta afectada, encontramos la
+                dislexia fonológica, la dislexia superficial y la dislexia mixta o profunda:
+                <ul>
+                    <li><strong> Superficial:</strong> En esta, está alterado el funcionamiento de la ruta léxica o
+                        visual, y por lo tanto emplean de forma predominante la ruta fonológica. Las personas con
+                        dislexia superficial no tienen dificultades para las palabras regulares, es decir aquellas en
+                        las que la pronunciación y la lectura se corresponden. En cambio tienen dificultades con las
+                        palabras irregulares, en las que la pronunciación no se corresponde con la lectura (como
+                        palabras de la lengua inglesa). Normalmente tienen buenos resultados con la lectura de
+                        pseudopalabras (ya que lo que leen se corresponde con las letras que ven), y presentan problemas
+                        con la ortografía arbitraria. Además al guiarse por la ruta auditiva suelen confundir palabras
+                        homófonas.</li>
+                    <li><strong> Fonológica: </strong>En este caso la alteración está en la ruta fonológica, en la
+                        conversión de grafema a fonema (letra a sonido), utilizan la ruta léxica para leer, se basan en
+                        el significado, reconocen palabras por el contexto. Leen las palabras de forma global,
+                        deduciendo, más que descifrando significados. Las personas que padecen dislexia fonológica
+                        tienen dificultades para leer palabras largas, también palabras que no conocen, pero sobre todo
+                        en palabras sin funcionalidad como las pseudopalabras. </li>
+                    <li><strong> Profunda o mixta:</strong> Es el tipo de dislexia que se caracteriza por la presencia
+                        de errores en ambas rutas, por lo que no disponen de una ruta alternativa y las dificultades
+                        suelen ser más llamativas. Suelen cometer errores semánticos, es decir confunden palabras sin
+                        ningún parecido visual pero sí de significado. Tienen dificultades para leer pseudopalabras,
+                        verbos, palabras poco frecuentes, cometen errores derivativos y morfológicos.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="background-color: #95C0CB;">
+        <div class="card-header" id="headingFour">
+            <h5 class="mb-0">
+                <button class="btn" data-bs-toggle="collapse" data-bs-target="#ayuda" aria-expanded="true"
+                    aria-controls="ayuda">
+                    Cómo ayudar a los niños con dislexia
+                </button>
+            </h5>
+        </div>
+
+        <div id="ayuda" class="collapse" aria-labelledby="headingOneFour" data-parent="#accordion">
+            <div class="card-body">
+                Existen apoyos basados en la evidencia para ayudar a los niños con dislexia a mejorar sus habilidades de
+                lectura. Un programa apropiado para un niño con dislexia podría incluir estas características:
+                <ul>
+                    <li>Uso de Materiales multisensoriales: como pantallas táctiles y aplicaciones interactivas,
+                        involucrar más de un sentido en el aprendizaje.</li>
+                    <li>Repetición y revisión de habilidades.</li>
+                    <li>Intensidad en la intervención, es decir, algo más que ser sacado de la clase una vez por semana
+                        para obtener ayuda adicional.</li>
+                    <li>Grupo pequeño o instrucción individual.</li>
+                    <li>Materiales de lectura adaptados: los materiales de lectura adaptados pueden incluir libros con
+                        letra grande, textos con espacios entre las palabras y líneas, y textos con ilustraciones.</li>
+                    <li>Enseñanza de habilidades fonológicas.</li>
+                    <li>Enseñanza y reforzamiento de palabras de fácil reconocimiento.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="background-color: #89BAC8;">
+        <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+                <button class="btn" data-bs-toggle="collapse" data-bs-target="#no-ayuda" aria-expanded="true"
+                    aria-controls="no-ayuda">
+                    Qué no ayuda
+                </button>
+            </h5>
+        </div>
+
+        <div id="no-ayuda" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+            <div class="card-body">
+                La tutoría simple en un centro de aprendizaje convencional que no está enfocado en la rehabilitación, o en el desarrollo de las habilidades faltantes, puede ser contraproducente si es una experiencia desagradable. Practicar la lectura ayuda a los lectores típicos a mejorar, pero puede ser una fuente de angustia para los lectores disléxicos. 
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
-
-{% block modules %}
-
-{% include "chat_module.html" %}
-
-{% endblock modules %}

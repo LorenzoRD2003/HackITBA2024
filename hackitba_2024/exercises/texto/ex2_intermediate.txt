@@ -1,0 +1,3 @@
+perro,gato,hoja,imagen_perro.png
+pato,puma,pollo,imagen_pato.png
+boca,river,casla,imagen_boca.png

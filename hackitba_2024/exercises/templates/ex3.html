@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Ejercicio{% endblock %}
+{% block title %}Info{% endblock %}
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/ex3.css' %}">
+{% endblock head %}
 
 {% block content %}
-  {{ exercise_data.name }}
-  {{ exercise_data.description }}
-  {{ exercise_data.difficulty }}
-  {{ exercise_data.type }}
-  {{ exercise_data.is_solved }}
+<div class="container ex3 ">
+    <h3>Separe las palabras y escriba la oración correctamente. </h3>
+    <form>
+        <input placeholder="Escriba acá" type="text" class="form-control mb-3" >
+        <button type="submit" class="btn">Verificar</button>
+    </form>
+</div>
+
 {% endblock %}

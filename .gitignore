@@ -9,5 +9,7 @@ local_settings.py
 .venv
 db.sqlite3
 
+**/0001_initial.py
+
 __pycache__/
 *.py[cod]

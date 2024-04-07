@@ -1,27 +1,28 @@
 .scrollable-grid {
-    display: flex;
-    overflow-x: auto;
-    width: 100%;
-    height: 90vh; /* Fill all available vertical space */
-    scrollbar-width: thick; /* Make the scrollbar thicker */
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 1200px; /* Set a maximum width for the grid */
+    margin: 0 auto; /* Center the grid horizontally */
+    padding: 5rem 0rem;
 }
-.scrollable-grid::-webkit-scrollbar {
-    width: 20px; /* Make the scrollbar wider for WebKit browsers */
-}
+
 .scrollable-grid .card {
-    flex: 0 0 auto;
-    width: 18rem; /* Set your desired card width */
-    margin-right: 10px; /* Adjust spacing between cards */
-    height: 100%; /* Make each card the same height */
-    display: flex;
-    flex-direction: column;
-}
-.scrollable-grid .card-body {
-    flex-grow: 1; /* Make the card body fill the remaining space */
+    width: 100%; /* Make the cards take full width of the grid */
+    max-width: 18rem; /* Set a maximum width for the cards */
+    margin: auto; /* Center the cards horizontally within the grid */
 }
 
 .card-img {
-    width: 100%; /* Make the image fill its container */
-    height: 250px; /* Set a fixed height for the image */
-    object-fit: cover; /* Ensure the image covers the container */
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.btn {
+    background-color: #608D8F;
+}
+
+.btn:hover {
+    background-color: #89BAC8;
 }

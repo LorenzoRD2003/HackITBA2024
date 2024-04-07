@@ -2,25 +2,41 @@
 {% extends 'base.html' %}
 
 {% block title %}Info{% endblock %}
-
-{%block head %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/achievements.css' %}">
 {% endblock head %}
-
 {% block content %}
-{% for achiv in achievement_list  %}
-<div class="card-transparent">
-    <div class="card-header">{{achiv.name}}</div>
-    <div class="card-block "><div class="progress blue">
-        <span class="progress-left">
-            <span class="progress-bar"></span>
-                </span>
-                <span class="progress-right">
-                                  <span class="progress-bar"></span>
-                </span>
-                <div class="progress-value">{{achiv.progress}}%</div>
-              </div></div>
-{% endfor %}
-</div>
+    <div class="container logros">
+        <h1>Progreso del usuario {{ username }}</h1>
+        <div class="container mt-4">
+            <div class="cartext-center">
+                <div class="card-body">
+                    <h2 class="card-title"><i class="bi bi-fire-fill"></i> Racha actual: {{ streak }}</h2> <!-- Replace text with fire icon -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for achiv in achievement_list %}
+            <div class="col-sm-4 mt-5"> <!-- Each achievement will occupy 4 columns out of 12 -->
+                <div class="text-center mt-2">
+                    <h3>{{ achiv.description }}</h3>
+                    <label><i class="bi bi-trophy"></i> <progress max="{{ achiv.limit }}" value="{{ achiv.progress }}">{{ achiv.progress }}%</progress></label>
+                    <h3>{{ achiv.progress }} / {{ achiv.limit }}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
