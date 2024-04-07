@@ -1,34 +1,41 @@
 {% extends 'base.html' %}
 
 {% block title %}Info{% endblock %}
-{%block head %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/achievements.css' %}">
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/achievements.css' %}">
 {% endblock head %}
 {% block content %}
-<div class="container logros">
-    <h1>Progreso del usuario {{ username }}</h1>
-    <div class="row">
-        {% for achiv in achievement_list %}
-        <div class="col-sm-4 mt-5"> <!-- Each achievement will occupy 4 columns out of 12 -->
-            <div class="text-center mt-2">
-                <h3>{{ achiv.description }}</h3>
-                <label><i class="bi bi-trophy"></i> <progress max="{{ achiv.limit }}" value="{{ achiv.progress }}">{{ achiv.progress }}%</progress></label>
-                <h3>{{ achiv.progress }} / {{ achiv.limit }}</h3>
+    <div class="container logros">
+        <h1>Progreso del usuario {{ username }}</h1>
+        <div class="container mt-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h2 class="card-title"><i class="bi bi-fire-fill"></i> Racha actual: {{ streak }}</h2> <!-- Replace text with fire icon -->
+                </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
-</div>
-
-
-{% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
+        
+        <div class="row">
+            {% for achiv in achievement_list %}
+            <div class="col-sm-4 mt-5"> <!-- Each achievement will occupy 4 columns out of 12 -->
+                <div class="text-center mt-2">
+                    <h3>{{ achiv.description }}</h3>
+                    <label><i class="bi bi-trophy"></i> <progress max="{{ achiv.limit }}" value="{{ achiv.progress }}">{{ achiv.progress }}%</progress></label>
+                    <h3>{{ achiv.progress }} / {{ achiv.limit }}</h3>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-    {% endfor %}
-{% endif %}
+    </div>
 
-
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}

@@ -49,7 +49,8 @@ class AchievementView(LoginRequiredMixin, View):
 
     return render(request, 'achievements.html', {
       'achievement_list': db_list,
-      'username': request.user.username
+      'username': request.user.username,
+      'streak': 0
     })
 
 class ExerciseOneView(LoginRequiredMixin, View):
