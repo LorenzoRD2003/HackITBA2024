@@ -91,10 +91,10 @@ def delete_exercise(exer_name):
   exercise = Exercise.objects.get(pk = exer_name)
   exercise.delete()
 
-def read_and_parse_ex1(filename, word_amount):
-  abspath = os.path.abspath(__file__)
-  dname = os.path.dirname(abspath)
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+def read_and_parse_ex1(filename, word_amount):
   try:
     with open(f'{dname}/texto/{filename}.txt', 'r') as file:
       text_content = file.read().upper().split('\n')
@@ -117,7 +117,7 @@ def read_and_parse_ex1(filename, word_amount):
 
 def read_and_parse_ex2(filename, amount):
   try:
-    with open(f'../texto/{filename}.txt', 'r') as file:
+    with open(f'{dname}/texto/{filename}.txt', 'r') as file:
       text_content = file.read().upper().split('\n')
   except FileNotFoundError:
     return []
@@ -147,7 +147,7 @@ def read_and_parse_ex2(filename, amount):
 
 def read_and_parse_ex3(filename, amount):
   try:
-    with open(f'../texto/{filename}.txt', 'r') as file:
+    with open(f'{dname}/texto/{filename}.txt', 'r') as file:
       text_content = file.read().upper().split('\n')
   except FileNotFoundError:
     return []
@@ -160,7 +160,7 @@ def read_and_parse_ex3(filename, amount):
 
 def read_and_parse_ex4(filename):
   try:
-    with open(f'../texto/{filename}.txt', 'r') as file:
+    with open(f'{dname}/texto/{filename}.txt', 'r') as file:
       text_content = file.read().upper().split('\n')
   except FileNotFoundError:
     return []
