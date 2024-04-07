@@ -4,4 +4,4 @@ Remove-Item -Path .\exercises\migrations\0001_initial.py
 Remove-Item -Path .\user_auth\migrations\0001_initial.py
 python manage.py makemigrations
 python manage.py migrate
-python manage.py shell < populate_db.py
+echo 'import populate_db' | python manage.py shell

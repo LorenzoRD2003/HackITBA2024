@@ -10,7 +10,10 @@
 <div class="container ex3 ">
     <h3>Separe las palabras y escriba la oración correctamente. </h3>
     <form>
-        <input placeholder="Escriba acá" type="text" class="form-control mb-3" >
+        {% for q in questions %}
+        <h5>{{ q.without_spaces }}</h5>
+        <input placeholder="Escriba acá" type="text" data-correct-value="{{ q.original }}" class="form-control mb-3" >
+        {% endfor %}
         <button type="submit" class="btn">Verificar</button>
     </form>
 </div>

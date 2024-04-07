@@ -59,9 +59,9 @@ class AchievementView(LoginRequiredMixin, View):
     })
 
 class ExerciseOneView(LoginRequiredMixin, View):
-  def get(self, request, ex_name):
+  def get(self, request, ex_num):
     user = UserProfile.objects.get(pk = request.user.username)
-    exercise = Exercise.objects.get(pk = ex_name)
+    exercise = Exercise.objects.get(pk = f'ex1_{ex_num}')
 
     exercise_data = exercise.generate_object(user)
     difficulty = exercise.get_difficulty()
@@ -82,33 +82,33 @@ class ExerciseOneView(LoginRequiredMixin, View):
     })
 
 class ExerciseTwoView(LoginRequiredMixin, View):
-  def get(self, request):
+  def get(self, request, ex_num):
     user = UserProfile.objects.get(pk = request.user.username)
-    exercise_name = request.GET.get('exercise')
-    exercise = Exercise.objects.get(pk = exercise_name)
-    
+    exercise = Exercise.objects.get(pk = f'ex2_{ex_num}')
+
     exercise_data = exercise.generate_object(user)
     difficulty = exercise.get_difficulty()
-    if (difficulty == BEGINNER):
-      questions = read_and_parse_ex2("ex2_beginner", 6)
-    elif (difficulty == INTERMEDIATE):
-      questions = read_and_parse_ex2("ex2_intermediate", 6)
-    elif (difficulty == ADVANCED):
-      questions = read_and_parse_ex2("ex2_advanced", 6)
     
+    if (difficulty == BEGINNER):
+      questions = read_and_parse_ex2("ex2_beginner", 1)
+    elif (difficulty == INTERMEDIATE):
+      questions = read_and_parse_ex2("ex2_intermediate", 1)
+    elif (difficulty == ADVANCED):
+      questions = read_and_parse_ex2("ex2_advanced", 1)
+    print(questions)
     return render(request, "ex2.html", {
       'exercise_data': exercise_data,
       "questions": questions
     })
 
 class ExerciseThreeView(LoginRequiredMixin, View):
-  def get(self, request):
+  def get(self, request, ex_num):
     user = UserProfile.objects.get(pk = request.user.username)
-    exercise_name = request.GET.get('exercise')
-    exercise = Exercise.objects.get(pk = exercise_name)
-    
+    exercise = Exercise.objects.get(pk = f'ex3_{ex_num}')
+
     exercise_data = exercise.generate_object(user)
     difficulty = exercise.get_difficulty()
+    
     if (difficulty == BEGINNER):
       questions = read_and_parse_ex3("ex3", 1)
     elif (difficulty == INTERMEDIATE):
@@ -116,27 +116,28 @@ class ExerciseThreeView(LoginRequiredMixin, View):
     elif (difficulty == ADVANCED):
       questions = read_and_parse_ex3("ex3", 10)
     
-    return render(request, "ex2.html", {
+    print(questions)
+    return render(request, "ex3.html", {
       'exercise_data': exercise_data,
       "questions": questions
     })
 
 class ExerciseFourView(LoginRequiredMixin, View):
-  def get(self, request):
-    # user = UserProfile.objects.get(pk = request.user.username)
-    # exercise_name = request.GET.get('exercise')
-    # exercise = Exercise.objects.get(pk = exercise_name)
+  def get(self, request, ex_num):
+    user = UserProfile.objects.get(pk = request.user.username)
+    exercise = Exercise.objects.get(pk = f'ex4_{ex_num}')
+
+    exercise_data = exercise.generate_object(user)
+    difficulty = exercise.get_difficulty()
     
-    # exercise_data = exercise.generate_object(user)
-    # difficulty = exercise.get_difficulty()
-    # if (difficulty == BEGINNER):
-    #   questions = read_and_parse_ex4("ex4_beginner")
-    # elif (difficulty == INTERMEDIATE):
-    #   questions = read_and_parse_ex4("ex4_intermediate")
-    # elif (difficulty == ADVANCED):
-    #   questions = read_and_parse_ex4("ex4_advanced")
+    if (difficulty == BEGINNER):
+      questions = read_and_parse_ex4("ex4_beginner")
+    elif (difficulty == INTERMEDIATE):
+      questions = read_and_parse_ex4("ex4_intermediate")
+    elif (difficulty == ADVANCED):
+      questions = read_and_parse_ex4("ex4_advanced")
     
     return render(request, "ex4.html", {
-      # 'exercise_data': exercise_data,
-      # "questions": questions
+      'exercise_data': exercise_data,
+      "questions": questions
     })
