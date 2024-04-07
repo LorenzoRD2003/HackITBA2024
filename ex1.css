@@ -8,40 +8,29 @@
 *{
   font-family:od3 !important;
 }
-body {
-    background: #2f3e45;
-    color: #e5dfd5;
-
-  }
-
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-.logo{
-  color:inherit;
-  text-decoration: none;
-  font-size: xx-large; 
-}
-
-.nav-link {
-  color: whitesmoke;
+.btn {
+  width: 90% !important;
+  background-color: #608D8F;
   
 }
 
-.nav-separator {
-  display: flex;
-  align-items: center;
-}
-.nav-separator::after {
-  content: '|';
-  padding: 0 10px;
-  color: #2f3e45; /* Adjust color as needed */
+.btn:hover {
+  background-color: #89BAC8;
 }
 
-header {
-  background-color: #222e34;
+.ex1 {
+  display: grid;
+  gap: 2rem;
+  place-content: center;
+  padding: 5rem 5rem !important;
+}
+
+
+.ex1 form {
+  padding: 5rem;
+}
+
+.imagen {
+  width: 20rem;
+  height: auto;
 }
