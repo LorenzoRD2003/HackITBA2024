@@ -1,6 +1,7 @@
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.contrib import messages
 
 from .models import *
 from .utils import *
@@ -30,6 +31,21 @@ class AchievementView(LoginRequiredMixin, View):
     achievements = list(Achievement.objects.all())
     
     db_list = list(map(lambda achiv: achiv.generate_object(user), achievements))
+
+    streak = user.streak
+
+    print(streak)
+
+    if 'streak_shown' not in request.session:
+      if streak == 0:
+        messages.info(request, 'Has comenzado una nueva racha, ¡te esperamos mañana!')
+      elif streak == 1: 
+        messages.info(request, f'¡Felicidades! Tienes una racha de {streak} día. ¡Sigue así!')
+      else:
+          messages.info(request, f'¡Felicidades! Tienes una racha de {streak} días. ¡Sigue así!')
+          
+      request.session['streak_shown'] = True
+
 
     return render(request, 'achievements.html', {
       'achievement_list': db_list,

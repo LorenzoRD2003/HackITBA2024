@@ -16,7 +16,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Login config
-LOGIN_URL = 'login/'
+LOGIN_URL = '/login/'
 
 # Application definition
 
@@ -101,7 +101,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
