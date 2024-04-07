@@ -20,6 +20,7 @@ Se recomienda crear un entorno virtual de python antes de comenzar. Existen vari
 [venv](https://docs.python.org/3/library/venv.html).
 
 La manera más sencilla es clonar el repositorio y ejecutar `install_and_run.sh` (`.ps1` en Windows) y listo.
+(En linux es necesario hacer `chmod +x ./install_and_run.sh` para poder ejecutar el script).
 
 Para un paso a paso manual más detallado, seguimos las instrucciones a continuación.
 
