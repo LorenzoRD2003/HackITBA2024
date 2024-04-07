@@ -17,3 +17,11 @@
 .text-center {
     text-align: center;
 }
+
+btn {
+    background-color: #608D8F;
+  }
+  
+  .btn:hover {
+    background-color: #89BAC8;
+  }
