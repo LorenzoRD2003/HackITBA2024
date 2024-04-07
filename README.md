@@ -42,3 +42,8 @@ Pasos a seguir:
 El servidor local escucha en la dirección `127.0.0.1:8000` (`localhost:8000`).
 Para dejar de ejecutar, utilizamos `Ctrl + C`.
 Django nos permite ver cambios en el código de manera instantánea, por lo que no hace falta reiniciar el servidor si se modifican los archivos del proyecto (a excepción de los archivos en `models.py`, que afectan la base de datos).
+
+----------
+
+La llave de OpenAI debería estar en un archivo de nombre `.env`, de la forma `OPENAI_SECRET_KEY='lallave'`.
+Sin embargo, no conseguimos una llave válida de free tier para poder implentar la funcionalidad.
