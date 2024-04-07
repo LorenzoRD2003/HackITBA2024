@@ -70,12 +70,11 @@ def delete_achievement(achiv_name):
   achiv = Achievement.objects.get(pk = achiv_name)
   achiv.delete()
 
-def create_exercise(exer_title, exer_description, exer_difficulty, exer_type, exer_image):
+def create_exercise(exer_title, exer_description, exer_difficulty, exer_type, exer_image, num=1):
   if (exer_difficulty not in VALID_DIFFICULTIES):
     return print("Invalid exercise difficulty.")
 
-  cant = Exercise.objects.filter(difficulty = exer_difficulty).count()
-  exer_name = f"{exer_type}_{cant+1}"
+  exer_name = f"{exer_type}_{num}"
   Exercise.objects.create(
     name = exer_name,
     title = exer_title,

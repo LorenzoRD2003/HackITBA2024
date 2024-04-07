@@ -73,6 +73,7 @@ class Exercise(models.Model):
         user_exercise = UserExercise.objects.filter(
             user_id = user,
             exercise_id = self.name).first()
+        
         return {
             'name': self.name,
             'title': self.title,
@@ -80,7 +81,7 @@ class Exercise(models.Model):
             'difficulty': self.difficulty,
             'type': self.type,
             'is_solved': user_exercise.is_solved,
-            'image': self.image,
+            'image_url': self.image,
             'url': f'/exercise/{self.name}'
         }
 

@@ -12,7 +12,7 @@ import datetime
 import math
 import random
 
-from exercises.models import UserAchievement, Achievement
+from exercises.models import UserAchievement, Achievement, Exercise, UserExercise
 from exercises.utils import create_achievement
 
 def update_streak(username):
@@ -35,7 +35,7 @@ class CustomLoginView(View):
     def get(self, request):
         if request.user.is_authenticated:
             update_streak(request.user.username)
-            return redirect(reverse('info'))
+            return redirect(reverse('exercises'))
         
         return render(request, 'login.html')
 
@@ -77,10 +77,15 @@ class CustomRegisterView(View):
 
             # --- Crear todo ---
             achivs = Achievement.objects.all()
+            exers = Exercise.objects.all()
 
             for achiv in achivs:
                 print('Create user achievement')
                 UserAchievement.objects.create(user=user_profile, achievement=achiv, progress=math.floor(random.random() * achiv.limit))
+
+            for exer in exers:
+                print('Creat user exercise')
+                UserExercise.objects.create(user=user_profile, exercise=exer)
 
             # --------
 
@@ -89,7 +94,7 @@ class CustomRegisterView(View):
             return JsonResponse({'error': str(e)}, status=500)
         
         login(request, user)
-        return redirect('info')
+        return redirect('exercises')
 
 class LogoutView(View):
     def get(self, request):

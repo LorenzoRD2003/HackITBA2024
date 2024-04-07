@@ -15,11 +15,11 @@
                 <div class="card">
                     <img src="{% static exercise.image_url %}" class="card-img-top card-img" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ exercise.name }}</h5>
+                        <h5 class="card-title">{{ exercise.title }}</h5>
                         <p class="card-text">{{ exercise.description }}</p>
                     </div>
                     <div class="card-footer mt-auto">
-                        <a href="{{ exercise.url }}" class="btn ">Comenzar</a>
+                        <a href="{% url 'ex4' %}" class="btn ">Comenzar</a>
                     </div>
                 </div>
                 {% endfor %}

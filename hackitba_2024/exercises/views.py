@@ -17,7 +17,7 @@ class ExerciseView(LoginRequiredMixin, View):
   
     # Later, we can make filters on the next line
     exercises = list(Exercise.objects.all())
-    
+
     db_list = list(map(lambda exer: exer.generate_object(user), exercises))
     return render(request, 'exercises.html', {
       'exercise_list': db_list
@@ -118,20 +118,20 @@ class ExerciseThreeView(LoginRequiredMixin, View):
 
 class ExerciseFourView(LoginRequiredMixin, View):
   def get(self, request):
-    user = UserProfile.objects.get(pk = request.user.username)
-    exercise_name = request.GET.get('exercise')
-    exercise = Exercise.objects.get(pk = exercise_name)
+    # user = UserProfile.objects.get(pk = request.user.username)
+    # exercise_name = request.GET.get('exercise')
+    # exercise = Exercise.objects.get(pk = exercise_name)
     
-    exercise_data = exercise.generate_object(user)
-    difficulty = exercise.get_difficulty()
-    if (difficulty == BEGINNER):
-      questions = read_and_parse_ex4("ex4_beginner")
-    elif (difficulty == INTERMEDIATE):
-      questions = read_and_parse_ex4("ex4_intermediate")
-    elif (difficulty == ADVANCED):
-      questions = read_and_parse_ex4("ex4_advanced")
+    # exercise_data = exercise.generate_object(user)
+    # difficulty = exercise.get_difficulty()
+    # if (difficulty == BEGINNER):
+    #   questions = read_and_parse_ex4("ex4_beginner")
+    # elif (difficulty == INTERMEDIATE):
+    #   questions = read_and_parse_ex4("ex4_intermediate")
+    # elif (difficulty == ADVANCED):
+    #   questions = read_and_parse_ex4("ex4_advanced")
     
-    return render(request, "ex2.html", {
-      'exercise_data': exercise_data,
-      "questions": questions
+    return render(request, "ex4.html", {
+      # 'exercise_data': exercise_data,
+      # "questions": questions
     })
