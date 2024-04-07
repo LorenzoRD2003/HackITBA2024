@@ -1,3 +1,14 @@
-perro,gato,hoja,imagen_perro.png
-pato,puma,pollo,imagen_pato.png
-boca,river,casla,imagen_boca.png
+Globo,Lobo,Robo,/img/globo.png
+Casa,Masa,Cara,/img/casa.png
+Queso,Hueso,Huevo,/img/queso.png
+Camino,Casino,Camion,/img/camino.png
+Pelota,Paleta,Pistola,/img/pelota.png
+Hacha,Haba,Hada,/img/hacha.png
+Banco,Barco,Barro,/img/banco.png
+Libro,Liebre,Litro,/img/libro.png
+Sol,Sal,Col,/img/sol.png
+Pesa,Pera,Perra,/img/pesa.png
+Bota,Boca,Bola,/img/bota.png
+Mesa,Misa,Masa/img/mesa.png
+Carpa,Marpa,Carro,/img/carpa.png
+Lapiz,Lugar,Ligar,/img/lapiz.png

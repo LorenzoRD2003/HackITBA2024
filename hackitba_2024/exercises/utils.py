@@ -153,10 +153,11 @@ def read_and_parse_ex3(filename, amount):
     return []
   filtered = random.sample(text_content, k = amount)
   without_spaces = list(map(lambda phrase: phrase.replace(' ', ''), filtered))
-  return {
-    "original": filtered,
-    "without_spaces": without_spaces
-  }
+  final = list(map(lambda phrase: {
+    'original': phrase,
+    'without_spaces': phrase.replace(' ', '')
+  }, filtered))
+  return final
 
 def read_and_parse_ex4(filename):
   try:
