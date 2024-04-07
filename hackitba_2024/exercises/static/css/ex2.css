@@ -1,27 +1,19 @@
-.contenedorActividad {
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.card-body {
-    padding: 15px;
-}
 
-.form-check {
-    margin-bottom: 10px;
+img {
+    height: 8rem;
+    width: auto;
 }
 
 .text-center {
     text-align: center;
 }
 
-btn {
+.btn {
+    margin-top: 1rem;
     background-color: #608D8F;
-  }
+}
   
-  .btn:hover {
+.btn:hover {
     background-color: #89BAC8;
-  }
+}

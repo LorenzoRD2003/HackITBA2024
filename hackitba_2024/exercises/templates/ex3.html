@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}Info{% endblock %}
 {% block head %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/ex3.css' %}">
@@ -9,11 +8,12 @@
 {% block content %}
 <div class="container ex3 ">
     <h3>Separe las palabras y escriba la oración correctamente. </h3>
+    {% for q in questions %}
+    <h5>{{ q.without_spaces }}</h5>
+    {% endfor %}
     <form>
-        {% for q in questions %}
-        <h5>{{ q.without_spaces }}</h5>
-        <input placeholder="Escriba acá" type="text" data-correct-value="{{ q.original }}" class="form-control mb-3" >
-        {% endfor %}
+        <input placeholder="Escriba acá" type="text" data-correct-value="{{ q.original }}" class="form-control mb-3">
+
         <button type="submit" class="btn">Verificar</button>
     </form>
 </div>

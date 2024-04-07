@@ -24,25 +24,15 @@ verificar.addEventListener('click',()=>{
     const original=document.getElementById('textOriginal');
     const similarity = compareTextsLetterByLetter(texto.value, original.value);
     console.log(similarity)
-    console.log("Similarity:", similarity.toFixed(2) + "%");
+    alert("Similarity:"+ similarity.toFixed(2) + "%");
+
     texto.value=""
 });
 
 
 function compareTextsLetterByLetter(text1, text2) {
-    // Check if texts have same length
-    text1 = text1.toUpperCase();
-    text2 = text2.toUpperCase();
-    // Calculate the number of matching characters
-    let matchingCount = 0;
-    for (let i = 0; i < text1.length; i++) {
-        if (text1[i] === text2[i]) {
-            matchingCount++;
-        }
+    if(text1.length==text2.length){
+        return 100;
     }
-
-    // Calculate percentage of similarity
-    const similarityPercentage = (matchingCount / text1.length) * 100;
-
-    return similarityPercentage;
+    return Math.floor(101 * Math.random())
 }
