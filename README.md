@@ -15,7 +15,7 @@ CIFU es una aplicación web diseñada para brindar ejercicios cognitivos y segui
 - Implentar API de OpenAI (ya está el código, falta utilizar una llave válida).
 - Aplicar a más tipos de condiciones, principalmente Alzheimer.
 ----------
-## Como ejecutar
+## Cómo ejecutar
 La manera más sencilla es clonar el repositorio y ejecutar `install_and_run.sh` (`.ps1` en Windows) y listo.
 
 Para un paso a paso manual más detallado, seguimos las instrucciones a continuación.
@@ -28,10 +28,13 @@ cuenta que existe la posibilidad de tener que usar:
 Pasos a seguir:
 1. Clonar repositorio (ejemplo: `git clone https://github.com/LorenzoRD2003/HackITBA2024.git`)
 2. Instalar requerimientos de pip: `pip install -r requirements.txt` (ya dentro de la carpeta `HackITBA2024`).
-3. Aplicar migraciones a la base de datos: `python3 hackitba_2024/manage.py migrate`
-4. Poblar la base de datos: `python3 manage.py shell < populate_db.py` (`echo 'import populate_db' | python manage.py shell` en Windows)
-5. Correr el servidor web (local): `python3 hackitba_2024/manage.py runserver`.
+3. Entrar al directorio `cd hackitba_2024`.
+4. Recopilar migraciones de las aplicaciones: `python3 manage.py makemigrations`
+5. Aplicar migraciones a la base de datos: `python3 manage.py migrate`
+6. Poblar la base de datos: `python3 manage.py shell < populate_db.py` (`echo 'import populate_db' | python manage.py shell` en Windows)
+7. Correr el servidor web (local): `python3 manage.py runserver`.
 (Cada vez que quiero correr el servidor local, utilizo `manage.py runserver`)
-El servidor local escucha en la dirección 127.0.0.1:8000 (localhost:8000).
+
+El servidor local escucha en la dirección `127.0.0.1:8000` (`localhost:8000`).
 Para dejar de ejecutar, utilizamos `Ctrl + C`.
-Django nos permite ver el cambio en el codigo de manera instantánea, por lo que no hace falta reiniciar el servidor si se modifican los archivos del proyecto (a excepción de los archivos en `models.py`, que afectan la base de datos).
+Django nos permite ver cambios en el código de manera instantánea, por lo que no hace falta reiniciar el servidor si se modifican los archivos del proyecto (a excepción de los archivos en `models.py`, que afectan la base de datos).
