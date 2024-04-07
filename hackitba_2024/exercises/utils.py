@@ -139,7 +139,7 @@ def read_and_parse_ex2(filename, amount):
         'correct': False
       }
     ],
-    "image": p[3]
+    "image": p[3].lower()
   }, splitted))
   for p in parsed:
     p["options"] = random.sample(p["options"], k = len(p["options"]))

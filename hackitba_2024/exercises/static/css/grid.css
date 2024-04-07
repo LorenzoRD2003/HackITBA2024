@@ -11,14 +11,12 @@
     display: grid !important;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    max-width: 1200px; /* Set a maximum width for the grid */
-    margin: 0 auto; /* Center the grid horizontally */
     padding: 5rem 0rem;
 }
 
 .scrollable-grid .card {
-    width: 100%; /* Make the cards take full width of the grid */
-    max-width: 18rem; /* Set a maximum width for the cards */
+    height: 32rem;
+    width: auto;
     margin: auto; /* Center the cards horizontally within the grid */
 }
 

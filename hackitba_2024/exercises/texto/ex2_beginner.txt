@@ -9,6 +9,6 @@ Libro,Liebre,Litro,/img/libro.png
 Sol,Sal,Col,/img/sol.png
 Pesa,Pera,Perra,/img/pesa.png
 Bota,Boca,Bola,/img/bota.png
-Mesa,Misa,Masa/img/mesa.png
+Mesa,Misa,Masa,/img/mesa.png
 Carpa,Marpa,Carro,/img/carpa.png
 Lapiz,Lugar,Ligar,/img/lapiz.png

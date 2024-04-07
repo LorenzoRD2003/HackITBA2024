@@ -1,0 +1,19 @@
+.contenedorActividad {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+.text-center {
+    text-align: center;
+}

@@ -45,3 +45,7 @@ body {
 header {
   background-color: #222e34;
 }
+
+.nav-link:hover {
+  color: #608D9F !important;
+}

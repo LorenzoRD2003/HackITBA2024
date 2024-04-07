@@ -79,12 +79,14 @@ class CustomRegisterView(View):
             achivs = Achievement.objects.all()
             exers = Exercise.objects.all()
 
-            for achiv in achivs:
+            achivs_prog = [10, 10, 10, 10, 9, 19, 10, 3]
+            
+            for i, achiv in enumerate(achivs):
                 print('Create user achievement')
-                UserAchievement.objects.create(user=user_profile, achievement=achiv, progress=math.floor(random.random() * achiv.limit))
+                UserAchievement.objects.create(user=user_profile, achievement=achiv, progress=achivs_prog[i])
 
             for exer in exers:
-                print('Creat user exercise')
+                print('Create user exercise')
                 UserExercise.objects.create(user=user_profile, exercise=exer)
 
             # --------
