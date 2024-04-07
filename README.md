@@ -2,21 +2,24 @@
 
 ### [Como ejecutar](#como-ejecutar)
 ----------
-## CIFUMIND: Mantené tu cerebro activo
-CIFUMIND (Cuidado Integral para el Fortalecimiento Unificado de la Mente)
+## CIFU: Mantené tu cerebro activo
+CIFU (Cuidado Integral para el Fortalecimiento Unificado de la Mente)
 
-CIFUMIND es una aplicación web diseñada para brindar ejercicios cognitivos y seguimiento de logros, orientado para personas mayores, con el objetivo de promover la salud cerebral y prevenir enfermedades neurodegenerativas como el Alzheimer. Nuestra plataforma ofrece una variedad de actividades estudiadas por expertos en neurociencia y salud mental, adaptadas específicamente para mejorar la memoria, la concentración y otras habilidades cognitivas.
+CIFU es una aplicación web diseñada para brindar ejercicios cognitivos y seguimiento de logros, con el objetivo de promover la salud cerebral y poder darle un acompañamiento interactivo a ciertas personas afectadas por complicaciones en relación al cerebro.
 
 ### Características principales
 * Ejercicios personalizados: Cada usuario recibe ejercicios adaptados a su nivel y necesidades específicas.
 * Seguimiento de progreso: Mantén un registro de tu desempeño y avances a lo largo del tiempo.
 
-----------
-
 ### Próximos pasos
-TODO
+- Implentar API de OpenAI (ya está el código, falta utilizar una llave válida).
+- Aplicar a más tipos de condiciones, principalmente Alzheimer.
 ----------
 ## Como ejecutar
+La manera más sencilla es clonar el repositorio y ejecutar `install_and_run.sh` (`.ps1` en Windows) y listo.
+
+Para un paso a paso manual más detallado, seguimos las instrucciones a continuación.
+
 El proyecto está pensado para ser ejecutado en Linux, pero no hay problema en utilizar Windows, teniendo en
 cuenta que existe la posibilidad de tener que usar:
 - `python` en vez de `python3`
@@ -26,6 +29,9 @@ Pasos a seguir:
 1. Clonar repositorio (ejemplo: `git clone https://github.com/LorenzoRD2003/HackITBA2024.git`)
 2. Instalar requerimientos de pip: `pip install -r requirements.txt` (ya dentro de la carpeta `HackITBA2024`).
 3. Aplicar migraciones a la base de datos: `python3 hackitba_2024/manage.py migrate`
-4. Popular la base de datos: `python3 reset_database.py` (Idealmente se ejecuta una única vez).
+4. Poblar la base de datos: `python3 manage.py shell < populate_db.py` (`echo 'import populate_db' | python manage.py shell` en Windows)
 5. Correr el servidor web (local): `python3 hackitba_2024/manage.py runserver`.
 (Cada vez que quiero correr el servidor local, utilizo `manage.py runserver`)
+El servidor local escucha en la dirección 127.0.0.1:8000 (localhost:8000).
+Para dejar de ejecutar, utilizamos `Ctrl + C`.
+Django nos permite ver el cambio en el codigo de manera instantánea, por lo que no hace falta reiniciar el servidor si se modifican los archivos del proyecto (a excepción de los archivos en `models.py`, que afectan la base de datos).
