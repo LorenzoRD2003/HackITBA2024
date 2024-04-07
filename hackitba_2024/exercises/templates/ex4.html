@@ -8,9 +8,13 @@
 
 {% block content %}
 <h3>Lea en voz alta </h3>
+<textarea id="textOriginal" cols="80" rows="7">{{ questions }}</textarea>
 <div >
-    <button class="btn" id="starRecord">Empezar Grabacion</button>
+    <button class="btn" id="startRecord">Empezar Grabacion</button>
     <button class="btn" id="stopRecord">Detener Grabacion</button>
+    <button class="btn" id="verificar" >Verificar</button>
 </div>
-<textarea id="texto" cols="80" rows="10">{{ questions }}</textarea>
+<textarea id="texto" cols="80" rows="10"></textarea>
+<script src="{% static 'js/ex4.js' %}"></script>
+
 {% endblock %}
