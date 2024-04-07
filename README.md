@@ -16,6 +16,9 @@ CIFU es una aplicación web diseñada para brindar ejercicios cognitivos y segui
 - Aplicar a más tipos de condiciones, principalmente Alzheimer.
 ----------
 ## Cómo ejecutar
+Se recomienda crear un entorno virtual de python antes de comenzar. Existen varios métodos, siendo el más común
+[venv](https://docs.python.org/3/library/venv.html).
+
 La manera más sencilla es clonar el repositorio y ejecutar `install_and_run.sh` (`.ps1` en Windows) y listo.
 
 Para un paso a paso manual más detallado, seguimos las instrucciones a continuación.
