@@ -1,5 +1,5 @@
 #!/bin/bash
-pip install -r requirements
+pip install -r requirements.txt
 cd hackitba_2024
 rm ./db.sqlite3
 rm ./exercises/migrations/0001_initial.py
