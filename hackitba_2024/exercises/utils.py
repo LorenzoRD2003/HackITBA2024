@@ -2,6 +2,9 @@ from math import floor
 from .models import *
 import random
 
+import os
+
+
 # Create your views here.
 def percent_calc(act, total):
   return min(100, floor(act / total * 100))
@@ -89,23 +92,26 @@ def delete_exercise(exer_name):
   exercise.delete()
 
 def read_and_parse_ex1(filename, word_amount):
+  abspath = os.path.abspath(__file__)
+  dname = os.path.dirname(abspath)
+
   try:
-    with open(f'../texto/{filename}.txt', 'r') as file:
+    with open(f'{dname}/texto/{filename}.txt', 'r') as file:
       text_content = file.read().upper().split('\n')
   except FileNotFoundError:
     return []
   filtered = random.sample(text_content, k = word_amount)
   parsed = list(map(lambda pair: tuple(pair.split(',')), filtered))
-  corrected = list(map(lambda p: {
-    'first_option': {
+  corrected = list(map(lambda p: [
+    {
       'text': p[0],
       'correct': True
     },
-    'second_option': {
+    {
       'text': p[1],
       'correct': False
     }
-  }, parsed))
+  ], parsed))
   reordered = list(map(lambda p: random.sample(p, k=len(p)), corrected))
   return reordered
 

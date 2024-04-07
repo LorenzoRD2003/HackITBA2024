@@ -19,7 +19,7 @@
                         <p class="card-text">{{ exercise.description }}</p>
                     </div>
                     <div class="card-footer mt-auto">
-                        <a href="{% url 'ex4' %}" class="btn ">Comenzar</a>
+                        <a href="/app/exercise/{{ exercise.name }}" class="btn ">Comenzar</a>
                     </div>
                 </div>
                 {% endfor %}

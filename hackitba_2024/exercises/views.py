@@ -54,13 +54,14 @@ class AchievementView(LoginRequiredMixin, View):
     })
 
 class ExerciseOneView(LoginRequiredMixin, View):
-  def get(self, request):
+  def get(self, request, ex_name):
+    print(ex_name)
     user = UserProfile.objects.get(pk = request.user.username)
-    exercise_name = request.GET.get('exercise')
-    exercise = Exercise.objects.get(pk = exercise_name)
-    
+    exercise = Exercise.objects.get(pk = ex_name)
+
     exercise_data = exercise.generate_object(user)
     difficulty = exercise.get_difficulty()
+
     if (difficulty == BEGINNER):
       # Read and parse info from ex1_beginner.txt
       questions = read_and_parse_ex1("ex1_beginner", 5)
@@ -71,6 +72,8 @@ class ExerciseOneView(LoginRequiredMixin, View):
       # Read and parse info from ex1_advanced.txt
       questions = read_and_parse_ex1("ex1_advanced", 20)
     
+    print(questions)
+
     return render(request, "ex1.html", {
       'exercise_data': exercise_data,
       "questions": questions
